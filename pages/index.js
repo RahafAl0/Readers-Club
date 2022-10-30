@@ -1,8 +1,23 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Card from '../components/Card'
 import styles from '../styles/Home.module.css'
+import { faker } from '@faker-js/faker';
+
 
 export default function Home() {
+  const randomName = faker.name.fullName(); // Rowan Nikolaus
+  const bookName = faker.animal.cat() 
+  const bookCover = faker.image.cats()
+
+  const generateProgress = () => {
+    return Math.floor(Math.random() * 100);
+  }
+
+  const rating = () => {
+    return Math.floor(Math.random() * 5);
+}
+
   return (
     <div className={styles.container}>
       <Head>
@@ -13,6 +28,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
+        <card />
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
@@ -22,9 +38,13 @@ export default function Home() {
         </p>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
+          <a className={styles.card}>
+            <h2><Card 
+              bookCover={bookCover} 
+              bookName={randomName} 
+              authorName={bookName} 
+              progress={generateProgress()} 
+              rating={rating()} /></h2>
           </a>
 
           <a href="https://nextjs.org/learn" className={styles.card}>
@@ -47,7 +67,7 @@ export default function Home() {
             className={styles.card}
           >
             <h2>Deploy &rarr;</h2>
-            <p>
+                        <p>
               Instantly deploy your Next.js site to a public URL with Vercel.
             </p>
           </a>
