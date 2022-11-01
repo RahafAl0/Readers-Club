@@ -1,6 +1,5 @@
 import './Card.module.css';
 
-
 const Card = (props) => {
   return (
     <div>
