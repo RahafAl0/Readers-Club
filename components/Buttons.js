@@ -1,13 +1,10 @@
-import styles from './Buttons.module.css'
 
 
 const Button = (props) => {
-    return ( 
-      <button className={styles.Buttons} >{props.text}</button>
-       
-      
-    );
-  };
+  return ( 
+    <button style={{background:props.bgColor, color:props.fontColor}} >{props.text}</button> 
+  );
+};
 
 
   export default Button;
