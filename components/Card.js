@@ -3,7 +3,7 @@ import './Card.module.css';
 const Card = (props) => {
   return (
     <div>
-      <img src={props.bookCover} width="160px"/>
+      <img src={props.bookCover} width="70px"/>
       <p>{props.bookName}</p>
       <p>by {props.authorName}</p>
       <p>Progress {props.progress}%</p>
