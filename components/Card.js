@@ -6,10 +6,9 @@ function BookCard() {
     <Card class="p-2 border" style={{ width: '18rem' }}>
       <Card.Img class="rounded mx-auto d-block" src={faker.image.cats()} width='150px' height='200px'  />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
+        <Card.Title>{faker.animal.cat()}</Card.Title>
         <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          Some quick example
         </Card.Text>
         <div>Progress {Math.floor(Math.random() * 100)}</div>
         <div>Rate {Math.floor(Math.random() * 5)}</div>
