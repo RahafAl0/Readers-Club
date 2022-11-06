@@ -24,3 +24,26 @@ a {
     background: black;
   }
 }
+
+.flex{display: flex;}
+
+.bgWhite {background-color: white;}
+.bgPrimary {background-color: rgb(87, 197, 87);}
+.bgLight {background-color: wheat;}
+.bgSecondary {background-color: lightgray;}
+.bgSuccess {background-color: rgb(30, 176, 198);}
+.bgInfo {background-color: rgb(88, 5, 130);}
+.bgWarning {background-color: yellow;}
+.bgDanger {background-color: rgb(255, 0, 81);}
+.bgDark {background-color: black;}
+
+
+.btnAqua {
+  background-color: aqua;
+  color:blueviolet;
+}
+
+.btnWhite{
+  background-color: blueviolet;
+  color:aqua;
+}
