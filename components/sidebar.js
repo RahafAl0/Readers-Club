@@ -2,8 +2,6 @@ import Card from 'react-bootstrap/Card';
 import { faker } from '@faker-js/faker';
 import CustomButton from './Button';
 import Image from "react-bootstrap/Image";
-import { Col, Grid, Row } from "react-bootstrap";
-import { margin } from '@mui/system';
 
 
 const Sidebar = () => {
@@ -50,11 +48,10 @@ const Sidebar = () => {
               </Card.Body>
             </Card>
           </div>
-      
         </div>
-        <div style={{display:'flex', margin:'auto'}}>
-          <CustomButton display='flex' variant='primary'>Add Shelf</CustomButton> 
-          <CustomButton  variant='primary'>Add Book</CustomButton>
+        <div style={{display:'flex', flexDirection:'column', margin:'auto', gap:'10px'}}>
+          <CustomButton variant='primary'>Add Shelf</CustomButton> 
+          <CustomButton variant='primary'>Add Book</CustomButton>
         </div> 
       </div>
     </div>
