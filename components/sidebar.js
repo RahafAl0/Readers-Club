@@ -2,18 +2,21 @@ import Card from 'react-bootstrap/Card';
 import { faker } from '@faker-js/faker';
 import CustomButton from './Button';
 import Image from "react-bootstrap/Image";
+import { Col, Grid, Row } from "react-bootstrap";
+import { margin } from '@mui/system';
+
 
 const Sidebar = () => {
   return (
+    
     <div>
       <div style={{width: '400px', height:'100vh', backgroundColor:'blueviolet' ,display:'flex', flexDirection:'column', alignItems:'', justifyContent:'center'}}>
-        <div style={{ display: "flex", width: '700', padding: '30' }}> 
-          <Image src={faker.image.cats()} roundedCircle/>
-        </div>
-        <div style={{color:'white'}}>
+            <Image style={{display:'flex', margin: 'auto'}}  width='150px' height='100' src={faker.image.cats()} roundedCircle/>
+       
+        <div style={{color:'white', margin:'auto'}}>
           <h4>Rahaf Almusleh</h4>
           </div>
-          <div style={{display:'flex', gap:'10px'}}>
+          <div style={{display:'flex', gap:'10px', margin:'auto'}}>
             <div>
               <Card class="p-2 border" style={{ width: '10rem', height: '10rem', backgroundColor:'darkorchid', color:'white' }}>
               <Card.Body>
@@ -49,7 +52,7 @@ const Sidebar = () => {
           </div>
       
         </div>
-        <div style={{display:'flex'}}>
+        <div style={{display:'flex', margin:'auto'}}>
           <CustomButton display='flex' variant='primary'>Add Shelf</CustomButton> 
           <CustomButton  variant='primary'>Add Book</CustomButton>
         </div> 
