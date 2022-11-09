@@ -1,5 +1,7 @@
 import { faker } from '@faker-js/faker';
 import Card from 'react-bootstrap/Card';
+import ProgressBar from 'react-bootstrap/ProgressBar';
+
 
 function BookCard() {
   return (
@@ -10,7 +12,7 @@ function BookCard() {
         <Card.Text>
           Some quick example
         </Card.Text>
-        <div>Progress {Math.floor(Math.random() * 100)}</div>
+        <div>Progress <ProgressBar now={60} /></div>
         <div>Rate {Math.floor(Math.random() * 5)}</div>
 
         
