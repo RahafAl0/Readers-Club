@@ -1,9 +1,6 @@
 import BookCard from '../components/Card'
 import styles from '../styles/Home.module.css'
-import CustomButton from '../components/Button'
-import UserProgress from '../components/UserProgress';
 import Sidebar from '../components/sidebar' 
-
 
 
 export default function Home() {
