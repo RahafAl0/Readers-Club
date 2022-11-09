@@ -10,7 +10,7 @@ const Sidebar = () => {
     <div>
       <div style={{width: '300px', height:'100vh', backgroundColor:'blueviolet' ,display:'flex', flexDirection:'column', alignItems:'', justifyContent:'center'}}>
             <Image style={{display:'flex', margin: 'auto', width:170, height:170}} 
-                   src="https://loremflickr.com/640/480/cats" roundedCircle
+                   src={faker.image.cats()} roundedCircle
             />
         <div style={{color:'white', margin:'auto'}}>
           <h4>Rahaf Almusleh</h4>
@@ -61,7 +61,7 @@ const Sidebar = () => {
             </Card>
           </div>
         </div>
-        <div style={{display:'flex', flexDirection:'column', margin:'auto', gap:'10px'}}>
+        <div style={{display:'flex', flexDirection:'column', margin:'auto', gap:'10px', color:'#6A2ABB'}}>
           <CustomButton variant='primary'>Add Shelf</CustomButton> 
           <CustomButton variant='primary'>Add Book</CustomButton>
         </div> 
