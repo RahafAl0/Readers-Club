@@ -1,39 +1,33 @@
-import { faker } from '@faker-js/faker';
 import Card from 'react-bootstrap/Card';
-import ProgressBar from 'react-bootstrap/ProgressBar';
+import { faker } from '@faker-js/faker';
+import Image from "react-bootstrap/Image";
 
 
-function BookCard() {
-  return (
-    <Card class="p-2 border" style={{ width: '18rem' }}>
-      <Card.Img class="rounded mx-auto d-block" src={faker.image.cats()} width='150px' height='200px'  />
-      <Card.Body>
-        <Card.Title>{faker.animal.cat()}</Card.Title>
-        <Card.Text>
-          Some quick example
-        </Card.Text>
-        <div>Progress <ProgressBar now={60} /></div>
-        <div>Rate {Math.floor(Math.random() * 5)}</div>
-
+const Review = () => {
+  return(
+    <div>
+      <div>
+        <Card class="p-2 border" style={{ width: '40rem', height:'7rem', margin:'auto' }}>
+            <Image style={{display:'flex', width:100, height:140}} 
+                   src={faker.image.cats()} roundedCircle />
+            <div>
+              <Card.Title>
+                  rahaf
+              </Card.Title>
+            </div>
+        </Card>
         
+      </div>
+      <div>
+        <Card class="p-2 border" style={{ width: '40rem', height:'7rem', margin:'auto' }}>
+          <Image style={{display:'flex', width:100, height:140}} 
+                 src={faker.image.cats()} roundedCircle />
+        </Card>
+      </div>
       
-      </Card.Body>
-    </Card>
-  );
+    </div>
+  )
 }
 
-export default BookCard;
 
-// const Card = (props) => {
-//   return (
-//     <div>
-//       <img src={props.bookCover} width="70px"/>
-//       <p>{props.bookName}</p>
-//       <p>by {props.authorName}</p>
-//       <p>Progress {props.progress}%</p>
-//       <p>Rating {props.rating}</p>
-//     </div>
-//   )
-// }
-
-// export default Card;
+export default Review;
