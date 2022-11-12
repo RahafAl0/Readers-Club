@@ -7,10 +7,11 @@ const BookPage = () => {
   return(
     <div> 
       <div>
+      
         <Searchbar />
         <BookDetail />
         <Review />
-        <Sidebar />
+        <Sidebar style={{marginTop:'5%'}}/>
      </div>
      </div>
   )
