@@ -1,38 +1,38 @@
-import Card from 'react-bootstrap/Card';
 import { faker } from '@faker-js/faker';
-import Image from "react-bootstrap/Image";
-import CustomButton from '../Button';
-
+import AddShelf from './AddShelf';
+import ProfilePicture from './ProfilePicture';
 
 const Review = () => {
   return(
     <div>
-      <div>
-        <Card class="p-2 border flex" style={{width: '40rem', height:'7rem', margin:'auto'}}>
-            <Image style={{width:100, height:100}} 
-                   src={faker.image.cats()} roundedCircle />
-              <div>
-                Rahaf Rated it {Math.floor(Math.random() * 5)}
-              </div>
-        </Card>
-        
+      <div className="card m-auto w-50">
+        <div className="card-body"> 
+          <h5 className="card-title text-center">Card title</h5>
+          <p className="card-text text-center">With supporting text below as a natural lead-in to additional content.</p>
+          <img className="rounded-circle shadow-1-strong me-3"
+            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(21).webp" alt="avatar" width="65"
+            height="65" />
+        </div>
       </div>
-      <div>
-        <Card class="p-2 border flex" style={{width: '40rem', height:'7rem', margin:'auto'}}>
-          <Image style={{display:'flex', width:100, height:100}} 
-                 src={faker.image.cats()} roundedCircle />
-            <div>
-              Rahaf Rated it {Math.floor(Math.random() * 5)}
-            </div>
-        </Card>
+      <div className="card m-auto w-50">
+      <div className="card-body"> 
+        <h5 className="card-title text-center">Card title</h5>
+        <p className="card-text text-center">With supporting text below as a natural lead-in to additional content.</p>
+        <img className="rounded-circle shadow-1-strong me-3"
+          src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(21).webp" alt="avatar" width="65"
+          height="65" />
       </div>
-      <div style={{flexDirection:'column', margin:'auto', gap:'10px', color:'#6A2ABB'}}>
-          <CustomButton variant='primary'>Add to</CustomButton> 
-          <CustomButton variant='primary'>Add review</CustomButton>
-        </div> 
     </div>
+    <button type="button" className="btn btn-primary">Add to</button>
+    <button type="button" className="btn btn-primary">Add review</button>
+    <ProfilePicture />
+    <AddShelf/>
+  </div>
   )
 }
 
 
+
+
 export default Review;
+
