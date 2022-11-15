@@ -11,7 +11,7 @@ const BookDetail = () => {
           <div class="card-body">
           <p className="fw-bold fs-1">{faker.name.fullName()}</p>
           <p className="fs-1 fw-bold">{faker.name.fullName()}</p>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+            <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
             This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
             This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
             This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
