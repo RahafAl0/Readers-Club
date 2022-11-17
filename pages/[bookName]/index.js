@@ -1,4 +1,4 @@
-import BookPage from "../../components/BookReview/BookPage";
+import BookPage from "../../components/BookPages/BookPage";
 
 
 export default function Book() {
