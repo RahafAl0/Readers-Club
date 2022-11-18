@@ -1,33 +1,24 @@
-import Card from 'react-bootstrap/Card';
 import { faker } from '@faker-js/faker';
-import Image from "react-bootstrap/Image";
 
-
-const Review = () => {
+const BookCard = () => {
   return(
-    <div>
-      <div>
-        <Card class="p-2 border" style={{ width: '40rem', height:'7rem', margin:'auto' }}>
-            <Image style={{display:'flex', width:100, height:140}} 
-                   src={faker.image.cats()} roundedCircle />
-            <div>
-              <Card.Title>
-                  rahaf
-              </Card.Title>
-            </div>
-        </Card>
-        
+    <div className="card border w-200px h-300px m-auto">
+      <div className="p-3">
+        <img className=" m-auto d-block w-100px h-150px"
+             src={faker.image.cats()} alt="avatar" width="100"
+             height="100" />
       </div>
-      <div>
-        <Card class="p-2 border" style={{ width: '40rem', height:'7rem', margin:'auto' }}>
-          <Image style={{display:'flex', width:100, height:140}} 
-                 src={faker.image.cats()} roundedCircle />
-        </Card>
+      <div className="card-body">
+        <h5 className="text">{faker.animal.cat()}</h5>
+        <p className="text">{faker.name.fullName()}</p>
+        <div class="progress">
+          <div class="progress-bar w-75" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+          25%
+        </div>
+        Rating {Math.floor(Math.random() * 5)}% 
       </div>
-      
-    </div>
+      </div>
   )
 }
 
-
-export default Review;
+export default BookCard;
