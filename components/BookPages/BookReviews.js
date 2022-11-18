@@ -1,6 +1,8 @@
-import { faker } from '@faker-js/faker';
 import AddBookToShelf from './AddBookToShelf';
+import AddNewBook from './AddNewBook';
 import AddShelf from './AddShelf';
+import CurrentlyReading from './CurrentlyReading';
+import Empty from './Empty';
 import ProfilePicture from './ProfilePicture';
 
 const Review = () => {
@@ -32,6 +34,9 @@ const Review = () => {
     <ProfilePicture />
     <AddShelf/>
     <AddBookToShelf/>
+    <AddNewBook/>
+    <Empty/>
+    <CurrentlyReading/>
   </div>
   )
 }
