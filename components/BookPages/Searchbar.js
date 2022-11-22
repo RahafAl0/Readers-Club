@@ -1,19 +1,14 @@
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 
 const Searchbar = () => {
   return(
-    <div>
-        <Form className="d-flex" style={{width:'800px', margin:'auto'}}>
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="inline-success">Search</Button>
-          </Form>
-    </div>
+
+        <div className="container-fluid">
+          <form className="d-flex" role="search">
+            <input className="form-control me-5 w-800px" type="search" placeholder="Search" aria-label="Search"/>
+            <button className="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+
   )
 }
 
