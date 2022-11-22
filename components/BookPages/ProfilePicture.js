@@ -1,6 +1,6 @@
 const ProfilePicture = () => {
     return(
-        <div className="card border border-primary w-300px h-400px m-auto">
+        <div className="card border border-primary w-350px h-445px m-auto">
           <button type="button" className="btn-close p-5" aria-label="Close"></button>
           <div className="card-body">
             <h5 className="text-center ">Profile Picture</h5>
