@@ -3,38 +3,28 @@ import { faker } from '@faker-js/faker';
 const Sidebar = () => {
   return(
       <div className="d-flex flex-column sidebar-body bg-info">
-        <img className="h-150px w-150px rounded-circle mx-auto d-block"
+        <img className="h-150px w-150px rounded-circle mx-auto d-block m-10"
              src={faker.image.cats()} 
         />
-        <div className="text text-center m-10 color-white">
+        <div className="text-center m-1">
           <h4>Rahaf Almusleh</h4>
         </div>
         <div>
-          <div className='row d-flex justify-content-center '>
-            <div className="p-2 card bg-primary w-125px h-100px m-5">
-              <div class="card-body">
-                <p class="card-text">hh</p>
-              </div>
+          <div className="row row-cols-2 px-xl-12 sidebar-toolbar">
+            {[{title: 'All', status: 11}, {title:'Read', status: 11}, {title:'Currently Reading', status: 11}, {title:'Want to Read', status: 11}].map((item, index) => (
+              <div className='col p-3 '>
+              <a href='#' className="btn p-5 w-100 text-start btn-active-primary h-100px">
+                <span className='text-white fw-bolder fs-1 d-block pb-1'>{item.status}</span>
+                <span className="fw-bold fs-8">{item.title}</span>
+              </a>
             </div>
-            <div className="p-2 card bg-primary w-125px h-100px m-5">
-              <div class="card-body">
-                <p class="card-text">hh</p>
-              </div>
-            </div>
-          </div>
-          <div className='row d-flex justify-content-center'>
-            <div className="p-2 card bg-primary w-125px h-100px m-5">
-              <div class="card-body">
-                <p class="card-text">hh</p>
-              </div>
-            </div>
-            <div className="p-2 card bg-primary w-125px h-100px m-5">
-              <div class="card-body">
-                <p class="card-text">hh</p>
-              </div>
-            </div>
-          </div>
+            ))}
+          </div>     
         </div>
+        <div className='row w-125px h-50px m-auto'>
+            <button className="btn text-primary btn-info m-2" type="button">Add Shelf</button>
+            <button className="btn btn-primary m-2" type="button">Add book</button>
+          </div>
       </div>
     
 
@@ -42,80 +32,3 @@ const Sidebar = () => {
 }
 
 export default Sidebar;
-
-
-
-// import Card from 'react-bootstrap/Card';
-// import { faker } from '@faker-js/faker';
-// import CustomButton from './Button';
-// import Image from "react-bootstrap/Image";
-
-
-// const Sidebar = () => {
-//   return (
-    
-//     <div>
-//       <div style={{width: '300px', height:'100vh', backgroundColor:'blueviolet' ,display:'flex', flexDirection:'column', alignItems:'', justifyContent:'center'}}>
-//             <Image style={{display:'flex', margin: 'auto', width:170, height:170}} 
-//                    src={faker.image.cats()} roundedCircle
-//             />
-//         <div style={{color:'white', margin:'auto'}}>
-//           <h4>Rahaf Almusleh</h4>
-//           </div>
-//           <div style={{display:'flex', gap:'5px', margin:'auto'}}>
-//             <div>
-//               <Card class="p-2 border" style={{ width: '7rem', height: '7rem', backgroundColor:'darkorchid', color:'white' }}>
-//               <Card.Body>
-//                 <Card.Text>
-//                 {Math.floor(Math.random() * 100)}
-//                 </Card.Text>
-//                 <Card.Text>
-//                   All Book
-//                 </Card.Text>
-//               </Card.Body>
-//             </Card>
-//             <Card class="p-2 border" style={{ width: '7rem', height: '7rem', backgroundColor:'darkorchid', color:'white' }}>
-//               <Card.Body>
-//               <Card.Text>
-//                 {Math.floor(Math.random() * 100)}
-//                 </Card.Text>
-//                 <Card.Text>
-//                   Read 
-//                 </Card.Text>
-//               </Card.Body>
-//             </Card>
-//           </div>
-//           <div>
-//             <Card class="p-2 border" style={{ width: '7rem', height: '7rem', backgroundColor:'darkorchid', color:'white' }}>
-//               <Card.Body>
-//               <Card.Text>
-//                 {Math.floor(Math.random() * 100)}
-//                 </Card.Text>
-//                 <Card.Text>
-//                   Currently Reading 
-//                 </Card.Text>
-//               </Card.Body>
-//             </Card>
-//             <Card class="p-2 border" style={{ width: '7rem', height: '7rem', backgroundColor:'darkorchid', color:'white' }}>
-//               <Card.Body>
-//               <Card.Text>
-//                 {Math.floor(Math.random() * 100)}
-//                 </Card.Text>
-//                 <Card.Text>
-//                   Want to Read 
-//                 </Card.Text>
-//               </Card.Body>
-//             </Card>
-//           </div>
-//         </div>
-//         <div style={{display:'flex', flexDirection:'column', margin:'auto', gap:'10px', color:'#6A2ABB'}}>
-//           <CustomButton variant='primary'>Add Shelf</CustomButton> 
-//           <CustomButton variant='primary'>Add Book</CustomButton>
-//         </div> 
-//       </div>
-//     </div>
-    
-//   );
-// }
-
-// export default Sidebar;
