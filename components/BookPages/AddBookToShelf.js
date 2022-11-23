@@ -1,7 +1,7 @@
 const AddBookToShelf = () => {
   return(
     <div>
-      <div className="card m-auto w-50 border border-primary ">
+      <div className="card m-auto w-500px border border-primary ">
         <div className="card-body"> 
           <div className='justify-content-between'>
             <h5 className="card-header p-2 m-2">Add Book</h5>
@@ -15,7 +15,7 @@ const AddBookToShelf = () => {
               <h5>1984</h5>
               <p>By Goerge Orewell</p>
             </div>
-            <div className="m-6 h-50px">
+            <div className=" h-50px">
               <button type="button" className="m-2 border border-success btn btn-outline-success">Shelf1</button>
               <button type="button" className="m-2 border border-success btn btn-outline-success">Shelf2</button>
               <button type="button" className="m-2 border border-success btn btn-outline-success">Shelf3</button>
