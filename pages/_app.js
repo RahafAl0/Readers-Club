@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
           </div>
           
         </div>
-        <div className='sidebar bg-info'>
+        <div className='sidebar bg-info w-325px'>
             <Sidebar/>          </div>
       </div>
     </div>
