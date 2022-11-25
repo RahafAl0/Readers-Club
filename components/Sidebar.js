@@ -11,7 +11,7 @@ const Sidebar = () => {
         </div>
         <div>
           <div className="row row-cols-2 px-xl-12 sidebar-toolbar">
-            {[{title: 'All', status: 11}, {title:'Read', status: 11}, {title:'Currently Reading', status: 11}, {title:'Want to Read', status: 11}].map((item, index) => (
+            {[{title: 'All', status: 129}, {title:'Read', status: 119}, {title:'Currently Reading', status: 4}, {title:'Want to Read', status: 6}].map((item, index) => (
               <div className='col p-3 '>
               <a href='#' className="btn p-5 w-100 text-start btn-active-primary h-100px">
                 <span className='text-white fw-bolder fs-1 d-block pb-1'>{item.status}</span>
