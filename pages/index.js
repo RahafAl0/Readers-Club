@@ -1,4 +1,4 @@
-import Sidebar from '../components/Sidebar' 
+import FourBookCards from '../components/FourCards'
 import BookCard from '../components/Card'
 
 export default function Home() {
@@ -16,7 +16,8 @@ export default function Home() {
                 progress={Math.floor(Math.random() * 100)} 
                 rating={Math.floor(Math.random() * 5)} 
               /> */}
-              <BookCard/>
+              <FourBookCards/>
+              {/* <BookCard/> */}
 
           <div className='flex'>         
             <div>
