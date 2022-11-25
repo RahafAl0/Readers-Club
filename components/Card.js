@@ -1,23 +1,20 @@
-import { faker } from '@faker-js/faker';
 
 const BookCard = () => {
   return (
-          <div className='col-md-4 col-xxl-4 col-lg-12'>
-            <div className='card card-custom shadow-none'>
-              <div className='card-body p-0'>
-                <div className='overlay rounded overflow-hidden'>
-                  <div className='overlay-wrapper rounded bg-light '>
-                    <img src='https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1327144697l/3744438.jpg' alt className=' w-75px'/></div>
-                </div>
-                
-              </div>
-              <div className=' mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column'>
-                <a className='fs-4 fw-bolder text-gray-800 text-hover-primary mb-1' href="/start-react-pro/shop/product/1">1984</a>
-                <span className='fs-6'>By George Orewell</span>
-              </div>
+    <div className='col-md-2 col-xxl-4 col-lg-12  w-175px h-245px  shadow-lg p-6 mb-5 bg-white rounded '>
+      <div className='card card-custom shadow-none'>
+          <div className='card-body p-0 m-3'>
+            <div className='overlay text-center overflow-hidden '>
+              <img src='https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1327144697l/3744438.jpg' alt className=' w-75px'/>
+            </div>  
+          </div>
+          <div className=' mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column'>
+            <a className='fs-4 fw-bolder text-gray-800 text-hover-primary mb-1' href="/start-react-pro/shop/product/1">1984</a>
+            <span className='fs-6'>By George Orewell</span>
             
-        </div>
+          </div>
       </div>
+    </div>
   )
 
 
