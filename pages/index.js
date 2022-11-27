@@ -1,4 +1,4 @@
-import FourBookCards from '../components/FourCards'
+import BookShelfRow from '../components/BookShelfRow'
 import BookCard from '../components/Card'
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
                 progress={Math.floor(Math.random() * 100)} 
                 rating={Math.floor(Math.random() * 5)} 
               /> */}
-              <FourBookCards/>
+              <BookShelfRow/>
               {/* <BookCard/> */}
 
           <div className='flex'>         
