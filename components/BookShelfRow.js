@@ -1,4 +1,3 @@
-import { faker } from '@faker-js/faker';
 import BookCard from './Card';
 
 const BookShelfRow = () => {
