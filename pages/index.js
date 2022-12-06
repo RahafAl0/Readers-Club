@@ -16,7 +16,9 @@ export default function Home() {
                 progress={Math.floor(Math.random() * 100)} 
                 rating={Math.floor(Math.random() * 5)} 
               /> */}
-              <BookShelfRow/>
+              {[{title: "Currently Reading", shelfUrl: "currently-reading"},{title: "Read", shelfUrl: "read"},{title: "To Read", shelfUrl: "to-read"},{title: "My Shelf", shelfUrl: "my-shelf"}].map((val, index) => {
+                return(<BookShelfRow title={val.title} shelfUrl={val.shelfUrl}/>)
+              })}
               {/* <BookCard/> */}
 
           <div className='flex'>         
