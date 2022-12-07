@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   return(
       <div className="d-flex flex-column sidebar-body bg-info">
         <img className="h-150px w-150px rounded-circle mx-auto d-block m-10"
@@ -11,9 +11,9 @@ const Sidebar = () => {
         </div>
         <div>
           <div className="row row-cols-2 px-xl-12 sidebar-toolbar">
-            {[{title: 'All', status: 129}, {title:'Read', status: 119}, {title:'Currently Reading', status: 4}, {title:'Want to Read', status: 6}].map((item, index) => (
+            {[{title: 'All', status: 129, link: '/'}, {title:'Read', status: 119, link: '/shelf/read'}, {title:'Currently Reading', status: 4, link: '/shelf/currently-reading'}, {title:'Want to Read', status: 6, link: '/shelf/want-to-read'}].map((item, index) => (
               <div className='col p-3 '>
-              <a href='#' className="btn p-5 w-100 text-start btn-active-primary h-100px">
+              <a href={item.link} className="btn p-5 w-100 text-start btn-active-primary h-100px">
                 <span className='text-white fw-bolder fs-1 d-block pb-1'>{item.status}</span>
                 <span className="fw-bold fs-8">{item.title}</span>
               </a>
