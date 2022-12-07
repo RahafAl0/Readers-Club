@@ -1,11 +1,19 @@
 import { faker } from '@faker-js/faker';
+import React, { useState } from 'react';
+import Dialog from './Dialog';
+import ProfilePicture from './BookPages/ProfilePicture';
 
 const Sidebar = (props) => {
+  const [showImageDialog, setShowImageDialog] = useState(false) 
+
   return(
+    <>
       <div className="d-flex flex-column sidebar-body bg-info">
-        <img className="h-150px w-150px rounded-circle mx-auto d-block m-10"
-             src={faker.image.cats()} 
-        />
+        <div role="button" onClick={() => {setShowImageDialog(true)}}>
+          <img className="h-150px w-150px rounded-circle mx-auto d-block m-10"
+              src={faker.image.cats()} 
+          />
+        </div>
         <div className="text-center m-1">
           <h4>Rahaf Almusleh</h4>
         </div>
@@ -26,7 +34,10 @@ const Sidebar = (props) => {
             <button className="btn btn-primary m-2" type="button">Add book</button>
           </div>
       </div>
-    
+      <Dialog show={showImageDialog} handleClose={() => setShowImageDialog(false)} content={
+        <ProfilePicture handleClose={() => setShowImageDialog(false)}/>
+      }/>
+    </>
 
   )
 }
