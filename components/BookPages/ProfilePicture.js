@@ -1,7 +1,11 @@
+import React, { useState } from 'react';
+
 const ProfilePicture = () => {
+  const [isHide, setIsHide] = useState(false)
+
     return(
-        <div className="card border border-primary w-350px h-445px m-auto">
-          <button type="button" className="btn-close p-5" aria-label="Close"></button>
+        <div className={isHide ? 'd-none' : "card border border-primary w-350px h-445px m-auto"}>
+          <button type="button" className={isHide ? "" : "btn-close p-5"} aria-label="Close" onClick={() => {setIsHide(true)}}></button>
           <div className="card-body">
             <h5 className="text-center ">Profile Picture</h5>
             <p className="text-center">Add a nice photo of yourself for your profile.</p>
