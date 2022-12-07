@@ -1,8 +1,6 @@
 import AddBookToShelf from './AddBookToShelf';
 import AddNewBook from './AddNewBook';
 import AddShelf from './AddShelf';
-import CurrentlyReadingWindow from './CurrentlyReadingWindow';
-import Empty from './Empty';
 import ProfilePicture from './ProfilePicture';
 
 const Review = () => {
@@ -35,8 +33,7 @@ const Review = () => {
     <AddShelf/>
     <AddBookToShelf/>
     <AddNewBook/>
-    <Empty/>
-    <CurrentlyReadingWindow/>
+    
   </div>
   )
 }
