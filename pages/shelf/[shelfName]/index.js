@@ -19,11 +19,15 @@ export default function ShelfName (props) {
 export const getServerSideProps = async (context) => {
   const {query} = context;
 
-  const shelfs = ['read', 'currently-reading', 'my-shelf', 'to-read']
+  const shelfs = ['read', 'currently-reading', 'want-to-read', 'to-read']
   const shelfIndex = shelfs.findIndex((item) => {
     return item == query.shelfName.toLowerCase()
   })
   const shelf = shelfIndex == -1 ? null : query.shelfName;
 
-  return {props: {shelf: shelf ? shelf.replace("-", " ") : 'Not found'}}
+  if (!shelf) {
+    return {notFound : true} 
+  }
+
+  return {props: {shelf: shelf.replace("-", " ") }}
 }
