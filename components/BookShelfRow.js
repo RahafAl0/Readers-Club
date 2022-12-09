@@ -13,7 +13,8 @@ const BookShelfRow = (props) => {
                 <a href={`/shelf/${props.shelfUrl}`} className='btn btn-light-primary btn-sm fw-bolder'>View more</a>
               </div>
               <div className='row g-5 g-xxl-8'>
-                {[1,2,3,4].map((val, index)=><BookCard />)}
+                {[1,2,3,4].map((val, index)=> <BookCard key={index} title='1984' url='/book/1984' author='Goerge Orewell'/>
+)}
               </div>
             </div>
           </div>
