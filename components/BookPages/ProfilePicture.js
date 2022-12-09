@@ -25,7 +25,7 @@ const ProfilePicture = ({handleClose, show}) => {
               height="100"
             />
           </div>
-          <div class="input-group mb-2">
+          <div className="input-group mb-2">
             <input
               type="text"
               class="form-control"
@@ -33,7 +33,7 @@ const ProfilePicture = ({handleClose, show}) => {
               aria-label="Recipient's username"
               aria-describedby="basic-addon2"
             />
-            <div class="input-group-append">
+            <div className="input-group-append">
               <button className="btn btn-dark" type="button">
                 Browse
               </button>
