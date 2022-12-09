@@ -40,15 +40,9 @@ const Sidebar = (props) => {
           <button className="btn btn-primary m-2" type="button" onClick={() => {setShowAddBookDialog(true)}}>Add book</button>
         </div>
       </div>
-    <Dialog show={showImageDialog} handleClose={() => setShowImageDialog(false)} content={
-        <ProfilePicture handleClose={() => setShowImageDialog(false)}/>
-      }/>
-     <Dialog show={showAddShelfDialog} handleClose={() => setShowAddShelfDialog(false)} content={
-        <AddShelf handleClose={() => setShowAddShelfDialog(false)}/>
-      }/>
-      <Dialog show={showAddBookDialog} handleClose={() => setShowAddBookDialog(false)} content={
-        <AddNewBook handleClose={() => setShowAddBookDialog(false)}/>
-      }/>
+    <ProfilePicture show={showImageDialog} handleClose={() => setShowImageDialog(false)} />
+    <AddShelf show={showAddShelfDialog} handleClose={() => setShowAddShelfDialog(false)} />
+    <AddNewBook show={showAddBookDialog} handleClose={() => setShowAddBookDialog(false)} />
     </>
 
   )
