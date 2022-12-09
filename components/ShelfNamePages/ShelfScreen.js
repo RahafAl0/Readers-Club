@@ -11,22 +11,25 @@ const ShelfScreen = (props) => {
             <h2 className='fw-bolder text-dark fs-2 mb-0'>{props.shelfName}</h2>
           </div>
           <div className='row g-5 g-xxl-8 m-4'>
-            <BookCard/>
-            <BookCard/>
-            <BookCard/>
-            <BookCard/>
+          <BookCard title='1984' url='/book/1984' author='Goerge Orewell'/>
+          <BookCard title='1984' url='/book/1984' author='Goerge Orewell'/>
+          <BookCard title='1984' url='/book/1984' author='Goerge Orewell'/>
+          <BookCard title='1984' url='/book/1984' author='Goerge Orewell'/>
+
           </div>
           <div className='row g-5 g-xxl-8 m-4'>
-            <BookCard/>
-            <BookCard/>
-            <BookCard/>
-            <BookCard/>
+          <BookCard title='1984' url='/book/1984' author='Goerge Orewell'/>
+          <BookCard title='1984' url='/book/1984' author='Goerge Orewell'/>
+          <BookCard title='1984' url='/book/1984' author='Goerge Orewell'/>
+          <BookCard title='1984' url='/book/1984' author='Goerge Orewell'/>
+
           </div>
           <div className='row g-5 g-xxl-8 m-4'>
-            <BookCard/>
-            <BookCard/>
-            <BookCard/>
-            <BookCard/>
+          <BookCard title='1984' url='/book/1984' author='Goerge Orewell'/>
+          <BookCard title='1984' url='/book/1984' author='Goerge Orewell'/>
+          <BookCard title='1984' url='/book/1984' author='Goerge Orewell'/>
+          <BookCard title='1984' url='/book/1984' author='Goerge Orewell'/>
+
           </div>
         </div>
       </div>
