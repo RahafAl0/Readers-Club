@@ -21,7 +21,7 @@ const Page = () => {
         </div>
       
       <div className="m-20 ms-auto">
-        <BookCard />
+      <BookCard title='1984' url='/book/1984' author='Goerge Orewell'/>
       </div>
       
     </div>
