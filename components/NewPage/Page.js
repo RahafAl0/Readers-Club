@@ -1,24 +1,26 @@
 import BookCard from "../Card";
+import Dropdown from 'react-bootstrap/Dropdown';
 
 const Page = () => {
   return(
     <div>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      <Dropdown>
+        <Dropdown.Toggle variant="success" id="dropdown-basic">
           Want to read
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="#">Want to read</a></li>
-          <li><a class="dropdown-item" href="#">Read</a></li>
-          <li><a class="dropdown-item" href="#">Currently reading</a></li>
-          <li><a class="dropdown-item" href="#">My shelf</a></li>
-        </ul>
-        <div className="row border border-primary ">
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
+          <Dropdown.Item href="#/action-1">Want to read</Dropdown.Item>
+          <Dropdown.Item href="#/action-2">Read</Dropdown.Item>
+          <Dropdown.Item href="#/action-3">Currently reading</Dropdown.Item>
+          <Dropdown.Item href="#/action-3">Want to read</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+        <div className="row float-end w-100px h-50px">
           <button type="button" className="btn btn-outline-primary">Shelf 1</button>
           <button type="button" className="btn btn-outline-primary">Shelf 2</button>
         </div>
-      </div>
-      <div className="m-20">
+      
+      <div className="m-20 ms-auto">
         <BookCard />
       </div>
       
