@@ -1,14 +1,16 @@
 import Modal from 'react-bootstrap/Modal';
 
-function Dialog({handleClose, show, content}) {
+function Dialog({handleClose, show, body, header, footer}) {
   return (
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-        
-        </Modal.Header>
-        <Modal.Body>{content}</Modal.Body>
-          
-      </Modal>
+    <Modal show={show} onHide={handleClose}>
+      <Modal.Header closeButton>
+        {header}
+      </Modal.Header>
+      <Modal.Body>{body}</Modal.Body>
+      <Modal.Footer>
+        {footer}
+      </Modal.Footer>    
+    </Modal>
     
   );
 }
