@@ -22,7 +22,7 @@ const AddShelf = ({ handleClose, show }) => {
       }
       footer={
         <>
-          <button class="btn btn-primary me-md-10 float-end" type="button">
+          <button className="btn btn-primary me-md-10 float-end" type="button">
             Add
           </button>
         </>
