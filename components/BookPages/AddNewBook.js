@@ -1,4 +1,4 @@
-import BookCard from "../Card";
+import AddBookCard from "../AddBookCard";
 import Dialog from "../Dialog";
 
 const AddNewBook = ({ handleClose, show }) => {
@@ -12,7 +12,7 @@ const AddNewBook = ({ handleClose, show }) => {
             <h5 className="card-header p-2 m-2">Add book</h5>
             <div className="m-10">
               <input
-                class="form-control me-2"
+                className="form-control me-2"
                 type="search"
                 placeholder="Goerge Orewell"
                 aria-label="Search"
@@ -24,11 +24,16 @@ const AddNewBook = ({ handleClose, show }) => {
       body={
         <>
           <div className="row m-2 p-2">
-            <BookCard />
-            <BookCard />
-            <BookCard />
-            <BookCard />
+            <AddBookCard title='1984' url='/book/1984' author='Goerge Orewell'/>
+            <AddBookCard title='1984' url='/book/1984' author='Goerge Orewell'/>
+            <AddBookCard title='1984' url='/book/1984' author='Goerge Orewell'/>
+            <AddBookCard title='1984' url='/book/1984' author='Goerge Orewell'/>
           </div>
+        </>
+      }
+      footer={
+        <>
+          <button class="btn btn-dark me-md-3 float-end" type="button" onClick={handleClose}>Cancel</button>
         </>
       }
     />
