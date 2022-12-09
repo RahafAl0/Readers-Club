@@ -2,9 +2,15 @@ import { faker } from '@faker-js/faker';
 import React, { useState } from 'react';
 import Dialog from './Dialog';
 import ProfilePicture from './BookPages/ProfilePicture';
+import AddShelf from './BookPages/AddShelf';
+import AddNewBook from './BookPages/AddNewBook';
+
+
 
 const Sidebar = (props) => {
   const [showImageDialog, setShowImageDialog] = useState(false) 
+  const [showAddShelfDialog, setShowAddShelfDialog] = useState(false)
+  const [showAddBookDialog, setShowAddBookDialog] = useState(false)
 
   return(
     <>
@@ -30,12 +36,18 @@ const Sidebar = (props) => {
           </div>     
         </div>
         <div className='row w-125px h-50px m-auto'>
-            <button className="btn text-primary btn-info m-2" type="button">Add Shelf</button>
-            <button className="btn btn-primary m-2" type="button">Add book</button>
-          </div>
+          <button className="btn text-primary btn-info m-2" type="button" onClick={() => {setShowAddShelfDialog(true)}}>Add Shelf</button>
+          <button className="btn btn-primary m-2" type="button" onClick={() => {setShowAddBookDialog(true)}}>Add book</button>
+        </div>
       </div>
-      <Dialog show={showImageDialog} handleClose={() => setShowImageDialog(false)} content={
+    <Dialog show={showImageDialog} handleClose={() => setShowImageDialog(false)} content={
         <ProfilePicture handleClose={() => setShowImageDialog(false)}/>
+      }/>
+     <Dialog show={showAddShelfDialog} handleClose={() => setShowAddShelfDialog(false)} content={
+        <AddShelf handleClose={() => setShowAddShelfDialog(false)}/>
+      }/>
+      <Dialog show={showAddBookDialog} handleClose={() => setShowAddBookDialog(false)} content={
+        <AddNewBook handleClose={() => setShowAddBookDialog(false)}/>
       }/>
     </>
 
