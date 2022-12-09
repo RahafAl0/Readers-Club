@@ -2,8 +2,8 @@ const ProfilePicture = ({handleClose}) => {
  
 
     return(
-        <div className="card border border-primary w-350px h-445px m-auto">
-          <button type="button" className="btn-close p-5" aria-label="Close" onClick={handleClose}></button>
+        <div className="border-primary w-350px h-445px m-auto">
+          {/* <button type="button" className="btn-close p-5" aria-label="Close" onClick={handleClose}></button> */}
           <div className="card-body">
             <h5 className="text-center ">Profile Picture</h5>
             <p className="text-center">Add a nice photo of yourself for your profile.</p>
@@ -19,7 +19,7 @@ const ProfilePicture = ({handleClose}) => {
           </div>
         </div>
         <div className="text-center p-2">
-          <button className="btn btn-primary" type="button">Save</button>
+          <button className="btn btn-primary" type="button" onClick={handleClose}>Save</button>
         </div>
         </div>
        
