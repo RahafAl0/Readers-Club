@@ -29,8 +29,8 @@ const Review = () => {
     </div>
     <button type="button" className="btn btn-primary">Add to</button>
     <button type="button" className="btn btn-primary">Add review</button>
-    <ProfilePicture />
-    <AddShelf/>
+    {/* <ProfilePicture />
+    <AddShelf/> */}
     <AddBookToShelf/>
     <AddNewBook/>
     
