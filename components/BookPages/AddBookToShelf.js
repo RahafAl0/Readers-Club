@@ -21,9 +21,12 @@ const AddBookToShelf = ({handleClose}) => {
               <button type="button" className="m-2 border border-success btn btn-outline-success">Shelf3</button>
               <button type="button" className="m-2 border border-success btn btn-outline-success">Shelf4</button>
             </div>
-            <div className="card-footer m-2">
-              <button className="btn btn-dark me-md-3 float-end" type="button" onClick={handleClose}>Cancel</button>
-              <button className="btn btn-primary me-md-3 float-end" type="button">Add</button>
+            <div className="card-footer m-2 d-flex align-items-center justify-content-between">
+              <span className="text-muted" role="button" > &lt; back</span>
+              <div>
+                <button className="btn btn-dark me-md-3 float-end" type="button" onClick={handleClose}>Cancel</button>
+                <button className="btn btn-primary me-md-3 float-end" type="button">Add</button>
+              </div>
             </div>
           </div>
         </div>
