@@ -6,7 +6,9 @@ import ProfilePicture from './ProfilePicture';
 const Review = () => {
   return(
     <div>
+      <div className='text-center'>Review</div>
       <div className="card m-auto w-50 border border-primary ">
+        
         <div className="card-body"> 
           <div className='justify-content-between'>
             <h5 className="card-title text-center">Card title</h5>
@@ -31,8 +33,8 @@ const Review = () => {
     <button type="button" className="btn btn-primary">Add review</button>
     {/* <ProfilePicture />
     <AddShelf/> */}
-    <AddBookToShelf/>
-    <AddNewBook/>
+    {/* <AddBookToShelf/> */}
+    {/* <AddNewBook/> */}
     
   </div>
   )
