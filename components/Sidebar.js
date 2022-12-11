@@ -9,6 +9,7 @@ const Sidebar = (props) => {
   const [showAddShelfDialog, setShowAddShelfDialog] = useState(false);
   const [showAddBookDialog, setShowAddBookDialog] = useState(false);
 
+
   return (
     <>
       <div className="d-flex flex-column sidebar-body bg-info">
@@ -84,6 +85,7 @@ const Sidebar = (props) => {
       <AddNewBook
         show={showAddBookDialog}
         handleClose={() => setShowAddBookDialog(false)}
+        
       />
     </>
   );
