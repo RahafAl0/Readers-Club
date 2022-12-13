@@ -4,10 +4,13 @@ import { useState, useEffect } from "react";
 
 const AddNewBook = ({ handleClose, show }) => {
   const [addBookToShelf, setAddBookToShelf] = useState(false);
-  const [bookDeatails, setBookDetails] = useState({});
+  const [bookDeatails, setBookDetails] = useState({title : "", author : ""});
   useEffect(() => {
-
-  }, [])
+    return function cleanup() {
+      setAddBookToShelf(false)
+      setBookDetails({title : "", author : ""})
+    } 
+  })
 
   function handleAddBookToShelf(book) {
     setAddBookToShelf(true);
@@ -20,8 +23,7 @@ const AddNewBook = ({ handleClose, show }) => {
       handleClose={handleClose}
       header={
         <>
-          <div className="justify-content-between">
-            <h5 className="card-header p-2 m-2">Add book</h5>
+            <h5>Add book</h5>
             
             <div className="m-10">
               <input
@@ -31,15 +33,15 @@ const AddNewBook = ({ handleClose, show }) => {
                 aria-label="Search"
               />
             </div>
-          </div>
+          
         </>
       }
       body={
         addBookToShelf ? (
           <>
             <div className="m-10">
-              <h5>1984</h5>
-              <p>By Goerge Orewell</p>
+              <h5>{bookDeatails.title}</h5>
+              <p>By {bookDeatails.author}</p>
             </div>
             <div className=" h-50px">
               <button
