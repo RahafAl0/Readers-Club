@@ -108,7 +108,7 @@ const AddNewBook = ({ handleClose, show }) => {
 
       footer={addBookToShelf ? <>
        <div className="card-footer m-2 d-flex align-items-center justify-content-between">
-              <span className="text-muted" role="button" > &lt; back</span>
+              <span className="text-muted padding-left" role="button" > &lt; back</span>
               <div>
                 <button className="btn btn-dark me-md-3 float-end" type="button" onClick={handleClose}>Cancel</button>
                 <button className="btn btn-primary me-md-3 float-end" type="button">Add</button>
