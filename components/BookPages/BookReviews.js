@@ -29,10 +29,12 @@ const Review = () => {
           height="65" />
       </div>
     </div>
-    <button type="button" className="btn btn-primary">Add to</button>
-    <button type="button" className="btn btn-primary">Add review</button>
-    {/* <ProfilePicture />
-    <AddShelf/> */}
+    <div className='row h-50px w-150px'>
+      <button type="button" className="btn btn-primary">Add to</button>
+      <button type="button" className="btn btn-primary">Add review</button>
+    </div>
+    {/* // <ProfilePicture /> */}
+    {/* <AddShelf/>  */}
     {/* <AddBookToShelf/> */}
     {/* <AddNewBook/> */}
     
