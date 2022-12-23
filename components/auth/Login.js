@@ -60,7 +60,7 @@ const Login = () => {
             setUsername(event.target.value);
           }}
         />
-        <label className="form-label" for="email">
+        <label className="form-label" htmlFor="email">
           Email address
         </label>
       </div> 
@@ -75,7 +75,7 @@ const Login = () => {
             setPassword(event.target.value);
           }}
         />
-        <label className="form-label" for="password">
+        <label className="form-label" htmlFor="password">
           Password
         </label>
       </div>
@@ -93,7 +93,7 @@ const Login = () => {
                 setRememberMe(event.target.value);
               }}
             />
-            <label className="form-check-label" for="rememberMe">
+            <label className="form-check-label" htmlFor="rememberMe">
               {" "}
               Remember me{" "}
             </label>
