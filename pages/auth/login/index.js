@@ -1,5 +1,5 @@
-import Login from "../../../components/authentication/Login";
+import LoginScreen from "../../../components/auth/Login";
 
-export default function login() {
-  return <Login />;
+export default function Login() {
+  return <LoginScreen />;
 }
