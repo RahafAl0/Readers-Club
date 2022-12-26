@@ -1,5 +1,8 @@
+import Layout from "../Layout";
+
 const BookDetail = () => {
   return (
+    <Layout>
     <div className="card border mb-3 w-700px h-120px m-auto">
       <div className="row g-0">
         <div className="col-md-4">
@@ -34,6 +37,7 @@ const BookDetail = () => {
         </div>
       </div>
     </div>
+    </Layout>
   );
 };
 
