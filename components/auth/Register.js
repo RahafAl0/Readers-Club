@@ -3,8 +3,53 @@ import { useState } from "react";
 const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('')
-  const [repeatPassword, setRepeatPassword] = useState('')
+  const [password, setPassword] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
+
+  async function register() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password1').value;
+    const password_confirm = document.getElementById('password1').value;
+
+    try {
+        const response = await fetch(`${API_URL}/api/auth/register`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, username, password1, password2 })
+        });
+        const data = await response.json();
+        localStorage.setItem('user', JSON.stringify(data));
+        getUser();
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
+async function getUser() {
+  const user = JSON.parse(localStorage.getItem('user'));
+  if (!user?.token) {
+      alert('You are not logged in');
+      return;
+  }
+
+  try {
+      const response = await fetch(`${API_URL}/api/auth/me`, {
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Token ${user.token}`
+          }
+      })
+      const data = await response.json();
+      const h1 = document.querySelector('h1');
+      h1.innerHTML = `Hello ${data.username}`;
+  } catch (error) {
+      console.log(error);
+  }
+}
+
 
   return (
     <section className="vh-100" >
