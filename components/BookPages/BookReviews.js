@@ -1,8 +1,3 @@
-import AddBookToShelf from './AddBookToShelf';
-import AddNewBook from './AddNewBook';
-import AddShelf from './AddShelf';
-import ProfilePicture from './ProfilePicture';
-
 const Review = () => {
   return(
     <div>
