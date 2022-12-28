@@ -1,52 +1,14 @@
 import { useState } from "react";
-
-const API_URL = 'http://localhost:8000';
+import { useRouter } from "next/router";
+import Link from "next/link";
+import { login } from "../../utils/auth";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
 
-  
-
-  async function login() {
-    try {
-        const response = await fetch(`${API_URL}/api/auth/login`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ username, password })
-        });
-        const data = await response.json();
-        console.log('login data is here => ',data);
-
-        localStorage.setItem('user', JSON.stringify({...data, username}));
-        await getUser();
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-  async function getUser() {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (!user?.token) {
-        alert('You are not logged in');
-        return;
-    }
-    try {
-      const response = await fetch(`${API_URL}/api/auth/me`, {
-          headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Token ${user.token}`
-          }
-      })
-       return response.json();
-  } catch (error) {
-      console.log(error);
-  }
-}
-  
+  const router = useRouter()
 
   return (
     <form>
@@ -109,7 +71,13 @@ const Login = () => {
         type="button"
         className="btn btn-primary btn-block mb-4"
         onClick={() => {
-          login();
+          login(username, password)
+          .then(() => {
+            router.push('/')
+          })
+          .catch((err) => {
+            console.log(err)
+          })
         }}
       >
         Sign in
@@ -117,7 +85,7 @@ const Login = () => {
 
       <div className="text-center">
         <p>
-          Not a member? <a href="#!">Register</a>
+          Not a member? <Link href="/auth/register">Register</Link>
         </p>
       </div>
     </form>
