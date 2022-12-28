@@ -1,6 +1,4 @@
 import '../styles/globals.css'
-import Searchbar from '../components/Searchbar'
-import Sidebar from '../components/Sidebar'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
@@ -9,24 +7,33 @@ function MyApp({ Component, pageProps }) {
 
   const router = useRouter()
   const isPublicRoute = router.route == '/auth/login' || router.route == '/auth/register';
+  const isObjectEmpty = (obj) => {
+    if(typeof obj == "object" && obj !== null ) {
+      return !Boolean(Object.keys(obj).length);
+    } else return true;
 
-  useEffect(() => {
-    console.log(router);
-    if(isPublicRoute) return;
+  } 
+
+  useEffect(() => {  
     const userItem = JSON.parse(localStorage.getItem('user') || null);
-    if(!userItem || user.expiry < Date.now()) {
+    if(isPublicRoute) { 
+      !isObjectEmpty(userItem) && router.push('/');
+      return;
+    }
+    if(isObjectEmpty(userItem) ||  user.expiry < Date.now()) {
       router.push('/auth/login');
       return;
     }
     setUser(userItem)
   }, [])
 
-  if(!isPublicRoute && !Object.keys(user).length) return <h1>Loading...</h1>
+  if(!isPublicRoute && isObjectEmpty(user)) return <h1>Loading...</h1>
 
   return (
     <Component {...pageProps} />
  
   )
 }
+
 
 export default MyApp
