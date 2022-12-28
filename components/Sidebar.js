@@ -1,5 +1,6 @@
 import { faker } from "@faker-js/faker";
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 import ProfilePicture from "./BookPages/ProfilePicture";
 import AddShelf from "./BookPages/AddShelf";
 import AddNewBook from "./BookPages/AddNewBook";
@@ -9,6 +10,7 @@ const Sidebar = (props) => {
   const [showAddShelfDialog, setShowAddShelfDialog] = useState(false);
   const [showAddBookDialog, setShowAddBookDialog] = useState(false);
 
+  const router = useRouter()
 
   return (
     <>
@@ -72,6 +74,10 @@ const Sidebar = (props) => {
           >
             Add book
           </button>
+        <button className="btn btn-danger" onClick={() => {
+          localStorage.setItem('user', JSON.stringify({}))
+          router.push('/auth/login')
+        }}>Logout</button>
         </div>
       </div>
       <ProfilePicture
