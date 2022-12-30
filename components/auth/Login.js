@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { login } from "../../utils/auth";
+import { login } from "../../utils/api/auth";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
 
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <form>
@@ -25,7 +25,7 @@ const Login = () => {
         <label className="form-label" htmlFor="email">
           Email address
         </label>
-      </div> 
+      </div>
 
       <div className="form-outline mb-4">
         <input
@@ -72,12 +72,12 @@ const Login = () => {
         className="btn btn-primary btn-block mb-4"
         onClick={() => {
           login(username, password)
-          .then(() => {
-            router.push('/')
-          })
-          .catch((err) => {
-            console.log(err)
-          })
+            .then(() => {
+              router.push("/");
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         }}
       >
         Sign in
