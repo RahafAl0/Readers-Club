@@ -1,6 +1,9 @@
 import '../styles/globals.css'
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { QueryClient, QueryClientProvider } from 'react-query'
+
+const queryClient = new QueryClient()
 
 function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState({})
@@ -30,7 +33,10 @@ function MyApp({ Component, pageProps }) {
   if(!isPublicRoute && isObjectEmpty(user)) return <h1>Loading...</h1>
 
   return (
-    <Component {...pageProps} />
+    <QueryClientProvider client={queryClient}>
+      <Component {...pageProps} />
+    </QueryClientProvider>
+
  
   )
 }
