@@ -1,6 +1,10 @@
+import { useState } from "react";
+import { API_URL } from "../../utils/api";
 import Dialog from "../Dialog";
 
 const AddShelf = ({ handleClose, show }) => {
+  const [shelfName, setShelfName] = useState("");
+
   return (
     <Dialog
       show={show}
@@ -17,12 +21,34 @@ const AddShelf = ({ handleClose, show }) => {
             type="text"
             placeholder="Add shelf"
             aria-label="default input example"
+            value={shelfName}
+            onChange={(event) => {
+              setShelfName(event.target.value);
+            }}
           />
         </>
       }
       footer={
         <>
-          <button className="btn btn-primary me-md-10 float-end" type="button">
+          <button
+            className="btn btn-primary me-md-10 float-end"
+            type="button"
+            disabled={!shelfName.length}
+            onClick={(event) => {
+              event.preventDefault();
+              const rawUser = localStorage.getItem("user") || null;
+              const user = JSON.parse(rawUser);
+              fetch(API_URL + "/api/user/shelves", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Token ${user?.token}`,
+                },
+                body: JSON.stringify({ name: shelfName }),
+              });
+              handleClose();
+            }}
+          >
             Add
           </button>
         </>
