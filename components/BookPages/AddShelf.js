@@ -1,5 +1,5 @@
+import getAxiosInstance from "../../utils/api/getAxiosInstance";
 import { useState } from "react";
-import { API_URL } from "../../utils/api";
 import Dialog from "../Dialog";
 
 const AddShelf = ({ handleClose, show }) => {
@@ -36,16 +36,11 @@ const AddShelf = ({ handleClose, show }) => {
             disabled={!shelfName.length}
             onClick={(event) => {
               event.preventDefault();
-              const rawUser = localStorage.getItem("user") || null;
-              const user = JSON.parse(rawUser);
-              fetch(API_URL + "/api/user/shelves", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                  Authorization: `Token ${user?.token}`,
-                },
-                body: JSON.stringify({ name: shelfName }),
-              });
+              getAxiosInstance({ auth: true }).post(
+                "/user/shelves",
+                { name: shelfName },
+                { headers: { "Content-Type": "application/json" } }
+              );
               handleClose();
             }}
           >

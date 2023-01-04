@@ -1,18 +1,16 @@
-import { API_URL } from ".";
+import getAxiosInstance from "./getAxiosInstance";
 
 export async function login(username, password) {
   try {
-    const response = await fetch(`${API_URL}/api/auth/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-    });
+    const response = getAxiosInstance({ auth: false }).post(
+      "/auth/login",
+      { username, password },
+      { headers: { "Content-Type": "application/json" } }
+    );
 
     if (!response.ok) throw new Error(response.statusText);
 
-    const data = await response.json();
+    const { data } = response;
 
     localStorage.setItem("user", JSON.stringify({ ...data, username }));
   } catch (error) {
@@ -22,19 +20,11 @@ export async function login(username, password) {
 }
 
 export async function getUser() {
-  const user = JSON.parse(localStorage.getItem("user"));
-  if (!user?.token) {
-    alert("You are not logged in");
-    return;
-  }
   try {
-    const response = await fetch(`${API_URL}/api/auth/me`, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Token ${user.token}`,
-      },
+    const response = await getAxiosInstance({ auth: true }).get("/auth/me", {
+      headers: { "Content-Type": "application/json" },
     });
-    return response.json();
+    return response.data;
   } catch (error) {
     console.log(error);
   }
@@ -42,18 +32,11 @@ export async function getUser() {
 
 export async function register({ email, username, password, passwordConfirm }) {
   try {
-    const response = await fetch(`${API_URL}/api/auth/register`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        username,
-        password,
-        password_confirm: passwordConfirm,
-      }),
-    });
+    const response = getAxiosInstance({ auth: false }).post(
+      "/auth/register",
+      { email, username, password, password_confirm: passwordConfirm },
+      { headers: { "Content-Type": "application/json" } }
+    );
 
     if (!response.ok) throw new Error(response.statusText);
   } catch (error) {

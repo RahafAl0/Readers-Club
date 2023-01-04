@@ -2,17 +2,14 @@ import AddBookCard from "../AddBookCard";
 import Dialog from "../Dialog";
 import { useState } from "react";
 import { useQuery } from "react-query";
-import { API_URL } from "../../utils/api";
+import getAxiosInstance from "../../utils/api/getAxiosInstance";
 
 const AddNewBook = ({ handleClose, show }) => {
   const [addBookToShelf, setAddBookToShelf] = useState(false);
   const [bookDeatails, setBookDetails] = useState({ title: "", author: "" });
 
   const { isLoading, error, data } = useQuery("mostRecentBooks", () => {
-    const user = JSON.parse(localStorage.getItem("user") || null);
-    return fetch(`${API_URL}/api/books?limit=4`, {
-      headers: { Authorization: `Token ${user?.token}` },
-    }).then((res) => res.json());
+    return getAxiosInstance({auth: true}).get('/books?limit=4').then((res) => res.data);
   });
 
   console.log(data);
