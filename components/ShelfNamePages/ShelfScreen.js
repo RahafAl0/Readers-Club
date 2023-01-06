@@ -1,41 +1,15 @@
 import { useQuery } from "react-query";
-import { API_URL } from "../../utils/api";
+import { fetchShelfData } from "../../utils/api/shelf";
 import BookCard from "../Card";
 import Layout from "../Layout";
 
 const ShelfScreen = ({ shelf }) => {
   const { url, labelEn } = shelf;
 
-  const { isLoading, error, data } = useQuery("shelfBooks", () => {
-    const fetchCurrentlyReadingShelfData = async () => {
-      return fetch(`${API_URL}/api/user/currently-reading`, {
-        headers: { Authorization: `Token ${user?.token}` },
-      });
-    };
-
-    const fetchReadShelfData = async () => {
-      return fetch(`${API_URL}/api/user/books/read/all`, {
-        headers: { Authorization: `Token ${user?.token}` },
-      });
-    };
-
-    const fetchDefaultShelfData = async () => {
-      return fetch(`${API_URL}/api/user/shelves/{shelf_id/books}`, {
-        headers: { Authorization: `Token ${user?.token}` },
-      });
-    };
-
-    const user = JSON.parse(localStorage.getItem("user") || null);
-    const fetchShelfData =
-      {
-        "currently-reading": fetchCurrentlyReadingShelfData,
-        read: fetchReadShelfData,
-      }[url] || fetchDefaultShelfData;
-
-    fetchShelfData().then((res) => res.json());
-
-    return;
+  const { isLoading, error, data } = useQuery("shelfBooks", async () => {
+    return (await fetchShelfData(url))?.data
   });
+  console.log('ll', data)
 
   return (
     <Layout>
