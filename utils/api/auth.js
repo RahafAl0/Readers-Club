@@ -2,13 +2,13 @@ import getAxiosInstance from "./getAxiosInstance";
 
 export async function login(username, password) {
   try {
-    const response = getAxiosInstance({ auth: false }).post(
+    const response = await getAxiosInstance({ auth: false }).post(
       "/auth/login",
       { username, password },
       { headers: { "Content-Type": "application/json" } }
     );
 
-    if (!response.ok) throw new Error(response.statusText);
+    if (response.status >= 400) throw new Error(response.statusText);
 
     const { data } = response;
 
@@ -32,13 +32,13 @@ export async function getUser() {
 
 export async function register({ email, username, password, passwordConfirm }) {
   try {
-    const response = getAxiosInstance({ auth: false }).post(
+    const response = await getAxiosInstance({ auth: false }).post(
       "/auth/register",
       { email, username, password, password_confirm: passwordConfirm },
       { headers: { "Content-Type": "application/json" } }
     );
 
-    if (!response.ok) throw new Error(response.statusText);
+    if (response.status >= 400) throw new Error(response.statusText);
   } catch (error) {
     console.log(error);
   }
