@@ -5,10 +5,15 @@ import Dialog from "../Dialog";
 const AddShelf = ({ handleClose, show }) => {
   const [shelfName, setShelfName] = useState("");
 
+  const handleCloseAddShelf = () => {
+    setShelfName('')
+    handleClose()
+  }
+
   return (
     <Dialog
       show={show}
-      handleClose={handleClose}
+      handleClose={handleCloseAddShelf}
       header={
         <>
           <h5 className="p-5 text-center">Add Shelf</h5>
@@ -34,14 +39,14 @@ const AddShelf = ({ handleClose, show }) => {
             className="btn btn-primary me-md-10 float-end"
             type="button"
             disabled={!shelfName.length}
-            onClick={(event) => {
+            onClick={async (event) => {
               event.preventDefault();
-              getAxiosInstance({ auth: true }).post(
+              await getAxiosInstance({ auth: true }).post(
                 "/user/shelves",
                 { name: shelfName },
                 { headers: { "Content-Type": "application/json" } }
               );
-              handleClose();
+              handleCloseAddShelf();
             }}
           >
             Add
