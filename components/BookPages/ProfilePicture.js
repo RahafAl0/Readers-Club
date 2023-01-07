@@ -3,7 +3,7 @@ import getAxiosInstance from '../../utils/api/getAxiosInstance'
 import Dialog from "../Dialog";
 
 
-const ProfilePicture = ({ handleClose, show }) => {
+const ProfilePictureEdit = ({ handleClose, show }) => {
   const inputImageRef = useRef();
 
   return (
@@ -68,4 +68,4 @@ const ProfilePicture = ({ handleClose, show }) => {
   );
 };
 
-export default ProfilePicture;
+export default ProfilePictureEdit;
