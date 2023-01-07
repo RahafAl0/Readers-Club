@@ -1,6 +1,7 @@
-import { faker } from "@faker-js/faker";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
+import { useQuery } from "react-query";
+import { getUser } from "../utils/api/auth";
 import ProfilePicture from "./BookPages/ProfilePicture";
 import AddShelf from "./BookPages/AddShelf";
 import AddNewBook from "./BookPages/AddNewBook";
@@ -9,6 +10,10 @@ const Sidebar = (props) => {
   const [showImageDialog, setShowImageDialog] = useState(false);
   const [showAddShelfDialog, setShowAddShelfDialog] = useState(false);
   const [showAddBookDialog, setShowAddBookDialog] = useState(false);
+
+  const { isLoading, error, data } =  useQuery("userProfile", async () => {
+    return (await getUser());
+  });
 
   const router = useRouter()
 
@@ -23,11 +28,11 @@ const Sidebar = (props) => {
         >
           <img
             className="h-150px w-150px rounded-circle mx-auto d-block m-10"
-            src={faker.image.cats()}
+            src={isLoading ? '/avatar.jpg' : data.image}
           />
         </div>
         <div className="text-center m-1">
-          <h4>Rahaf Almusleh</h4>
+          <h4>{isLoading ? 'welcome' : data.user.username}</h4>
         </div>
         <div>
           <div className="row row-cols-2 px-xl-12 sidebar-toolbar">

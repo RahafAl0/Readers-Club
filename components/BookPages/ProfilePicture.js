@@ -1,6 +1,11 @@
+import { useRef } from "react";
+import getAxiosInstance from '../../utils/api/getAxiosInstance'
 import Dialog from "../Dialog";
 
-const ProfilePicture = ({handleClose, show}) => {
+
+const ProfilePicture = ({ handleClose, show }) => {
+  const inputImageRef = useRef();
+
   return (
     <Dialog
       show={show}
@@ -8,7 +13,6 @@ const ProfilePicture = ({handleClose, show}) => {
       header={
         <>
           <h5 className="text-center ">Profile Picture</h5>
-          
         </>
       }
       body={
@@ -26,17 +30,9 @@ const ProfilePicture = ({handleClose, show}) => {
             />
           </div>
           <div className="input-group mb-2">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="no file selected"
-              aria-label="Recipient's username"
-              aria-describedby="basic-addon2"
-            />
-            <div className="input-group-append">
-              <button className="btn btn-dark" type="button">
-                Browse
-              </button>
+           
+            <div class="mb-3">
+              <input class="form-control" type="file" accept="image/*" ref={inputImageRef} id="formFile"/>
             </div>
           </div>
         </>
@@ -47,7 +43,21 @@ const ProfilePicture = ({handleClose, show}) => {
             <button
               className="btn btn-primary"
               type="button"
-              onClick={handleClose}
+              onClick={() => {
+                // uploadImage()
+                console.log('rashed', inputImageRef.current.files);
+                const imageFile = inputImageRef.current.files[0];
+                const data = new FormData()
+                data.append('image', imageFile, imageFile.name);
+                console.log('ll', data)
+                getAxiosInstance({ auth: true }).post('/user/profile/image', data, {
+                  headers: {
+                    'Content-Type': `multipart/form-data`
+                  }
+                })
+
+                handleClose();
+              }}
             >
               Save
             </button>
@@ -56,7 +66,6 @@ const ProfilePicture = ({handleClose, show}) => {
       }
     />
   );
- 
 };
 
 export default ProfilePicture;
