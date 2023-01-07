@@ -21,7 +21,7 @@ export async function login(username, password) {
 
 export async function getUser() {
   try {
-    const response = await getAxiosInstance({ auth: true }).get("/auth/me", {
+    const response = await getAxiosInstance({ auth: true }).get("/user/profile", {
       headers: { "Content-Type": "application/json" },
     });
     return response.data;
