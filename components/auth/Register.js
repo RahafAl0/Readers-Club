@@ -117,8 +117,8 @@ const Register = () => {
                             password,
                             passwordConfirm,
                           })
-                            .then(() => {
-                              login(username, password);
+                            .then(async () => {
+                              await login(username, password);
                             })
                             .then(() => {
                               router.push("/");
