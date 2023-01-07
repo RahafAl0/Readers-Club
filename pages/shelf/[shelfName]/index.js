@@ -17,8 +17,8 @@ export default function ShelfName(props) {
 
 export const getServerSideProps = async (context) => {
   const { query } = context;
-
-  const shelfs = ["read", "currently-reading", "want-to-read", "to-read"];
+  //ToDo
+  const shelfs = ["read", "currently-reading", 1, 2];
   const shelfIndex = shelfs.findIndex((item) => {
     return item == query.shelfName.toLowerCase();
   });
