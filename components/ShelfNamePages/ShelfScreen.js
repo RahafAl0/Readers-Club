@@ -7,9 +7,17 @@ const ShelfScreen = ({ shelf }) => {
   const { url, labelEn } = shelf;
 
   const { isLoading, error, data } = useQuery("shelfBooks", async () => {
-    return (await fetchShelfData(url))?.data
+    return await fetchShelfData(url)
   });
-  console.log('ll', data)
+
+  const renderBooks = () => {
+    if(isLoading){
+      return <div className="row g-5 g-xxl-8 m-4">Loading...</div> 
+    }
+    return data.items.map((item, index) => {
+      return null
+    })
+  }
 
   return (
     <Layout>
@@ -21,6 +29,7 @@ const ShelfScreen = ({ shelf }) => {
                 <div className="d-flex justify-content-between align-items-center mb-7">
                   <h2 className="fw-bolder text-dark fs-2 mb-0">{labelEn}</h2>
                 </div>
+                {renderBooks()}
                 <div className="row g-5 g-xxl-8 m-4">
                   <BookCard
                     title="1984"
