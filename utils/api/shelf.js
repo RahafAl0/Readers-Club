@@ -19,20 +19,33 @@ export async function fetchShelfData(
       "/user/books/read/all" + shelfBooksQueryString
     );
 
-  const fetchDefaultShelfData = async () =>
+  const getFetchDefaultShelfData = (shelfId) => async () =>
     getAxiosInstance({ auth: true }).get(
-      "/user/shelves/{shelf_id/books" + shelfBooksQueryString
+      `/user/shelves/${shelfId}/books` + shelfBooksQueryString
     );
 
   const fetchShelfDataInternal =
     {
       "currently-reading": fetchCurrentlyReadingShelfData,
       read: fetchReadShelfData,
-    }[shelfSlug] || fetchDefaultShelfData;
+    }[shelfSlug] || getFetchDefaultShelfData(shelfSlug);
   try{
-    return await fetchShelfDataInternal();
+    const response =  (await fetchShelfDataInternal());
+    console.log('resp', response)
+    return response.data
   }catch(err){
     console.log(err)
     return
   }
 }
+
+export async function  fetchAllShelvs() {
+  try{
+   return (await getAxiosInstance({ auth: true }).get(
+      "/user/shelves")).data;
+    }catch(err){
+      console.log(err)
+      return
+    }
+    }
+
