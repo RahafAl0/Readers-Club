@@ -1,13 +1,17 @@
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
 import BookShelfRow from "../components/BookShelfRow";
 import Layout from "../components/Layout";
 
 export default function Home() {
+  const { t } = useTranslation('common')
+
   return (
     <Layout>
       <div>
         {[
-          { title: "Currently Reading", shelfUrl: "currently-reading" },
-          { title: "Read", shelfUrl: "read" },
+          { title: t("currentlyReading"), shelfUrl: "currently-reading" },
+          { title: t("read"), shelfUrl: "read" },
           { title: "To Read", shelfUrl: "to-read" },
           { title: "Want to read", shelfUrl: "want-to-read" },
         ].map((val, index) => {
@@ -22,4 +26,15 @@ export default function Home() {
       </div>
     </Layout>
   );
+}
+
+export async function getServerSideProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        'common',
+      ])),
+      // Will be passed to the page component as props
+    },
+  }
 }
