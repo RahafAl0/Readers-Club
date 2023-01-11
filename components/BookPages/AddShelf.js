@@ -1,14 +1,17 @@
 import getAxiosInstance from "../../utils/api/getAxiosInstance";
 import { useState } from "react";
+import { useTranslation } from "next-i18next";
 import Dialog from "../Dialog";
 
 const AddShelf = ({ handleClose, show }) => {
+  const { t } = useTranslation("common");
+
   const [shelfName, setShelfName] = useState("");
 
   const handleCloseAddShelf = () => {
-    setShelfName('')
-    handleClose()
-  }
+    setShelfName("");
+    handleClose();
+  };
 
   return (
     <Dialog
@@ -16,7 +19,7 @@ const AddShelf = ({ handleClose, show }) => {
       handleClose={handleCloseAddShelf}
       header={
         <>
-          <h5 className="p-5 text-center">Add Shelf</h5>
+          <h5 className="p-5 text-center">{t("addShelf")}</h5>
         </>
       }
       body={
@@ -24,7 +27,7 @@ const AddShelf = ({ handleClose, show }) => {
           <input
             className=" m-auto w-375px form-control"
             type="text"
-            placeholder="Add shelf"
+            placeholder={t("addShelf")}
             aria-label="default input example"
             value={shelfName}
             onChange={(event) => {
@@ -49,7 +52,7 @@ const AddShelf = ({ handleClose, show }) => {
               handleCloseAddShelf();
             }}
           >
-            Add
+            {t("add")}
           </button>
         </>
       }

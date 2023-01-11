@@ -1,9 +1,11 @@
 import { useRef } from "react";
-import getAxiosInstance from '../../utils/api/getAxiosInstance'
+import { useTranslation } from "next-i18next";
+import getAxiosInstance from "../../utils/api/getAxiosInstance";
 import Dialog from "../Dialog";
 
-
 const ProfilePictureEdit = ({ handleClose, show }) => {
+  const { t } = useTranslation("common");
+
   const inputImageRef = useRef();
 
   return (
@@ -12,13 +14,13 @@ const ProfilePictureEdit = ({ handleClose, show }) => {
       handleClose={handleClose}
       header={
         <>
-          <h5 className="text-center ">Profile Picture</h5>
+          <h5 className="text-center ">{t("profilePicture")}</h5>
         </>
       }
       body={
         <>
           <p className="text-center">
-            Add a nice photo of yourself for your profile.
+            {t("addAnicephotoOfYourselfForYourProfile")}
           </p>
           <div className="p-5">
             <img
@@ -30,9 +32,14 @@ const ProfilePictureEdit = ({ handleClose, show }) => {
             />
           </div>
           <div className="input-group mb-2">
-           
             <div class="mb-3">
-              <input class="form-control" type="file" accept="image/*" ref={inputImageRef} id="formFile"/>
+              <input
+                class="form-control"
+                type="file"
+                accept="image/*"
+                ref={inputImageRef}
+                id="formFile"
+              />
             </div>
           </div>
         </>
@@ -45,21 +52,23 @@ const ProfilePictureEdit = ({ handleClose, show }) => {
               type="button"
               onClick={() => {
                 // uploadImage()
-                console.log('rashed', inputImageRef.current.files);
                 const imageFile = inputImageRef.current.files[0];
-                const data = new FormData()
-                data.append('image', imageFile, imageFile.name);
-                console.log('ll', data)
-                getAxiosInstance({ auth: true }).post('/user/profile/image', data, {
-                  headers: {
-                    'Content-Type': `multipart/form-data`
+                const data = new FormData();
+                data.append("image", imageFile, imageFile.name);
+                getAxiosInstance({ auth: true }).post(
+                  "/user/profile/image",
+                  data,
+                  {
+                    headers: {
+                      "Content-Type": `multipart/form-data`,
+                    },
                   }
-                })
+                );
 
                 handleClose();
               }}
             >
-              Save
+              {t("save")}
             </button>
           </div>
         </>

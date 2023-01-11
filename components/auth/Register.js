@@ -1,8 +1,11 @@
+import { useTranslation } from "next-i18next";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { login, register } from "../../utils/api/auth";
 
 const Register = () => {
+  const { t } = useTranslation("common");
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,13 +23,19 @@ const Register = () => {
                 <div className="row justify-content-center">
                   <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                     <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
-                      Sign up
+                      {t("signup")}
                     </p>
 
                     <form className="mx-1 mx-md-4">
                       <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fas fa-user fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-0">
+                          <label
+                            className="form-label"
+                            htmlFor="form3Example1c"
+                          >
+                            {t("name")}
+                          </label>
                           <input
                             type="text"
                             id="name"
@@ -36,18 +45,18 @@ const Register = () => {
                               setUsername(event.target.value);
                             }}
                           />
-                          <label
-                            className="form-label"
-                            htmlFor="form3Example1c"
-                          >
-                            Your Name
-                          </label>
                         </div>
                       </div>
 
                       <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-0">
+                          <label
+                            className="form-label"
+                            htmlFor="form3Example3c"
+                          >
+                            {t("email")}
+                          </label>
                           <input
                             type="email"
                             id="email"
@@ -57,18 +66,18 @@ const Register = () => {
                               setEmail(event.target.value);
                             }}
                           />
-                          <label
-                            className="form-label"
-                            htmlFor="form3Example3c"
-                          >
-                            Your Email
-                          </label>
                         </div>
                       </div>
 
                       <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-0">
+                          <label
+                            className="form-label"
+                            htmlFor="form3Example4c"
+                          >
+                            {t("password")}
+                          </label>
                           <input
                             type="password"
                             id="password"
@@ -78,18 +87,18 @@ const Register = () => {
                               setPassword(event.target.value);
                             }}
                           />
-                          <label
-                            className="form-label"
-                            htmlFor="form3Example4c"
-                          >
-                            Password
-                          </label>
                         </div>
                       </div>
 
                       <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fas fa-key fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-0">
+                          <label
+                            className="form-label"
+                            htmlFor="form3Example4cd"
+                          >
+                            {t("repeatPassword")}
+                          </label>
                           <input
                             type="password"
                             id="rebeatPassword"
@@ -99,12 +108,6 @@ const Register = () => {
                               setPasswordConfirm(event.target.value);
                             }}
                           />
-                          <label
-                            className="form-label"
-                            htmlFor="form3Example4cd"
-                          >
-                            Repeat your password
-                          </label>
                         </div>
                       </div>
                       <button
@@ -128,7 +131,7 @@ const Register = () => {
                             });
                         }}
                       >
-                        Register
+                        {t("register")}
                       </button>
                     </form>
                   </div>

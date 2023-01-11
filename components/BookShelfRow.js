@@ -1,6 +1,9 @@
+import { useTranslation } from 'next-i18next'
 import BookCard from "./Card";
 
 const BookShelfRow = (props) => {
+  const { t } = useTranslation('common');
+
   return (
       <div>
         <div className="content fs-6 d-flex flex-column-fluid " id="kt_content">
@@ -16,7 +19,7 @@ const BookShelfRow = (props) => {
                       href={`/shelf/${props.shelfUrl}`}
                       className="btn btn-light-primary btn-sm fw-bolder"
                     >
-                      View more
+                     {t('viewMore')}
                     </a>
                   </div>
                   <div className="row g-5 g-xxl-8">

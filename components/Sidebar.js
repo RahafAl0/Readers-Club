@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { useQuery } from "react-query";
 import { getUser } from "../utils/api/auth";
+import { useTranslation } from "next-i18next";
 import ProfilePictureEdit from "./BookPages/ProfilePicture";
 import AddShelf from "./BookPages/AddShelf";
 import AddNewBook from "./BookPages/AddNewBook";
@@ -9,6 +10,8 @@ import { fetchShelfData } from "../utils/api/shelf";
 import { getBooks } from "../utils/api/books";
 
 const Sidebar = (props) => {
+  const { t } = useTranslation("common");
+
   const [showImageDialog, setShowImageDialog] = useState(false);
   const [showAddShelfDialog, setShowAddShelfDialog] = useState(false);
   const [showAddBookDialog, setShowAddBookDialog] = useState(false);
@@ -18,25 +21,25 @@ const Sidebar = (props) => {
     const [readShelf, currentlyReadShelf, allBooks] = await Promise.all([
       fetchShelfData("read"),
       fetchShelfData("currently-reading"),
-      getBooks({limit: 1})
+      getBooks({ limit: 1 }),
     ]);
 
-  const statusBoxItems = [
-    { title: "All", count: allBooks.count, link: "/" },
-    { title: "Read", count: readShelf.count, link: "/shelf/read" },
-    {
-      title: "Currently Reading",
-      count: currentlyReadShelf.count,
-      link: "/shelf/currently-reading",
-    },
+    const statusBoxItems = [
+      { title: t("all"), count: allBooks.count, link: "/" },
+      { title: t("read"), count: readShelf.count, link: "/shelf/read" },
+      {
+        title: t("currentlyReading"),
+        count: currentlyReadShelf.count,
+        link: "/shelf/currently-reading",
+      },
     ];
 
-    return {userProfile, statusBoxItems};
+    return { userProfile, statusBoxItems };
   });
 
   const router = useRouter();
 
-  const {userProfile, statusBoxItems = []} = data || {}; 
+  const { userProfile, statusBoxItems = [] } = data || {};
 
   return (
     <>
@@ -54,14 +57,11 @@ const Sidebar = (props) => {
           />
         </div>
         <div className="text-center m-1">
-          <h4>{isLoading ? "welcome" : userProfile.user.username}</h4>
+          <h4>{isLoading ? t("welcome") : userProfile.user.username}</h4>
         </div>
         <div>
           <div className="row row-cols-2 px-xl-12 sidebar-toolbar">
-            {[
-             ...statusBoxItems,
-              { title: "Want to Read", count: 6, link: "/shelf/want-to-read" },
-            ].map((item, index) => (
+            {[...statusBoxItems].map((item, index) => (
               <div key={index} className="col p-3 ">
                 <a
                   href={item.link}
@@ -84,7 +84,7 @@ const Sidebar = (props) => {
               setShowAddShelfDialog(true);
             }}
           >
-            Add Shelf
+            {t("addShelf")}
           </button>
           <button
             className="btn btn-primary m-2"
@@ -93,7 +93,7 @@ const Sidebar = (props) => {
               setShowAddBookDialog(true);
             }}
           >
-            Add book
+            {t("addBook")}
           </button>
           <button
             className="btn btn-danger"
@@ -102,7 +102,7 @@ const Sidebar = (props) => {
               router.push("/auth/login");
             }}
           >
-            Logout
+            {t("logout")}
           </button>
         </div>
       </div>
