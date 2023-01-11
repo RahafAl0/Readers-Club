@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { appWithTranslation } from 'next-i18next'
 
 const queryClient = new QueryClient();
 
@@ -44,4 +45,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);
