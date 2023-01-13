@@ -31,7 +31,6 @@ export async function fetchShelfData(
     }[shelfSlug] || getFetchDefaultShelfData(shelfSlug);
   try{
     const response =  (await fetchShelfDataInternal());
-    console.log('resp', response)
     return response.data
   }catch(err){
     console.log(err)

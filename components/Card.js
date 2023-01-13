@@ -8,18 +8,20 @@ const BookCard = ({ title, url, author }) => {
               src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1327144697l/3744438.jpg"
               alt={title}
               className=" w-75px"
+
             />
           </div>
           <img src="/plus.svg" />
         </div>
         <div className=" mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column">
           <a
-            className="fs-4 fw-bolder text-gray-800 text-hover-primary mb-1"
+            className="fs-4 fw-bolder text-gray-800 text-hover-primary mb-1 text-truncate"
             href={url}
+            title={title}
           >
             {title}
           </a>
-          <span className="fs-6">By {author}</span>
+          <span className="fs-6 text-truncate" title={author}>By {author}</span>
        
         </div>
       </div>

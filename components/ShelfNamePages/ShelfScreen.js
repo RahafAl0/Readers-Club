@@ -1,23 +1,51 @@
 import { useQuery } from "react-query";
+import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 import { fetchShelfData } from "../../utils/api/shelf";
 import BookCard from "../Card";
 import Layout from "../Layout";
 
-const ShelfScreen = ({ shelf }) => {
-  const { url, labelEn } = shelf;
+const ShelfScreen = () => {
+  const router = useRouter();
+
+  const { t } = useTranslation("common");
 
   const { isLoading, error, data } = useQuery("shelfBooks", async () => {
-    return await fetchShelfData(url)
+    const verticalShelf = (function getVerticalShelfData() {
+      const shelves = [
+        { slug: "read", label: t("read") },
+        {
+          slug: "currently-reading",
+          label: t("currentlyReading")
+        },
+      ];
+      const shelfIndex = shelves.findIndex((item) => {
+        return item.slug == router.query.shelfName.toLowerCase();
+      });
+      return shelfIndex == -1 ? null : shelves[shelfIndex];
+    })();
+    if(verticalShelf) {
+     return {...(await fetchShelfData(verticalShelf.slug)), ...verticalShelf}
+    }
+    const shelfData = await fetchShelfData(router.query.shelfName)
+    if( !shelfData.count && !verticalShelf) throw new Error('Page Not Found');
+    return { ...shelfData, slug: router.query.shelfName, label: shelfData.items[0].shelf_name }
   });
 
   const renderBooks = () => {
-    if(isLoading){
-      return <div className="row g-5 g-xxl-8 m-4">Loading...</div> 
+    if (isLoading) {
+      return <div className="row g-5 g-xxl-8 m-4">{t("loading")}</div>;
     }
-    return data.items.map((item, index) => {
-      return null
-    })
-  }
+    return data.items.map(({ book }) => {
+      return  <BookCard
+      key={book.id}
+      title={book.title}
+      url="#"
+      author={book.authors}
+    
+    />;
+    });
+  };
 
   return (
     <Layout>
@@ -27,9 +55,29 @@ const ShelfScreen = ({ shelf }) => {
             <div className="card-body">
               <div className="mb-10">
                 <div className="d-flex justify-content-between align-items-center mb-7">
-                  <h2 className="fw-bolder text-dark fs-2 mb-0">{labelEn}</h2>
+                  <h2 className="fw-bolder text-dark fs-2 mb-0">{isLoading ? 'Loading' : data.label}</h2>
                 </div>
-                {renderBooks()}
+                
+                {!['read', 'currently-read'].includes(isLoading ? '' : data.slug)?<div className="row g-5 g-xxl-8 m-4">{renderBooks()}</div>
+                : <>
+                <div className="row g-5 g-xxl-8 m-4">
+                 
+                  <BookCard
+                    title="1984"
+                    url="/book/1984"
+                    author="Goerge Orewell"
+                  />
+                  <BookCard
+                    title="1984"
+                    url="/book/1984"
+                    author="Goerge Orewell"
+                  />
+                  <BookCard
+                    title="1984"
+                    url="/book/1984"
+                    author="Goerge Orewell"
+                  />
+                </div>
                 <div className="row g-5 g-xxl-8 m-4">
                   <BookCard
                     title="1984"
@@ -73,29 +121,7 @@ const ShelfScreen = ({ shelf }) => {
                     url="/book/1984"
                     author="Goerge Orewell"
                   />
-                </div>
-                <div className="row g-5 g-xxl-8 m-4">
-                  <BookCard
-                    title="1984"
-                    url="/book/1984"
-                    author="Goerge Orewell"
-                  />
-                  <BookCard
-                    title="1984"
-                    url="/book/1984"
-                    author="Goerge Orewell"
-                  />
-                  <BookCard
-                    title="1984"
-                    url="/book/1984"
-                    author="Goerge Orewell"
-                  />
-                  <BookCard
-                    title="1984"
-                    url="/book/1984"
-                    author="Goerge Orewell"
-                  />
-                </div>
+                </div>  </>}
               </div>
             </div>
           </div>

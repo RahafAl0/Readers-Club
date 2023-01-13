@@ -6,7 +6,7 @@ const BookPage = () => {
     <div>
       <div>
         <BookDetail />
-        <Review />
+        {/* <Review /> */}
       </div>
     </div>
   );
