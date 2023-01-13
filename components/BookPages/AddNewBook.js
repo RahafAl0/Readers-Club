@@ -17,19 +17,21 @@ const AddNewBook = ({ handleClose, show }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchItems, setSearchItems] = useState([]);
   const [shelves, setShelves] = useState([]);
-  const [selectedShelf, setSelectedShelf] = useState(0);
+  const [selectedShelves, setSelectedShelves] = useState([]);
+  const [addBookLoading, setAddBookLoading] = useState(false);
 
   const { isLoading, error, data } = useQuery("mostRecentBooks", () => {
     return getAxiosInstance({ auth: true })
       .get("/books?limit=4")
       .then((res) => res.data);
   });
-  console.log('[[[[[', shelves)
 
   function handleDialogClose() {
     setTimeout(() => {
       setAddBookToShelf(false);
       setBookDetails({ title: "", author: "" });
+      setSearchItems([])
+      setSelectedShelves([])
     }, 200);
   }
 
@@ -69,7 +71,7 @@ const AddNewBook = ({ handleClose, show }) => {
               event.preventDefault();
               const data = (
                 await getAxiosInstance({ auth: false }).get(
-                  `/books/search?title=${searchTerm}&limit=4`
+                  `/books/search?title=${searchTerm}&exclude_library=true&limit=4` 
                 )
               ).data;
               setSearchItems(data.items);
@@ -103,16 +105,12 @@ const AddNewBook = ({ handleClose, show }) => {
                   return (
                     <button
                       onClick={async (event) => {
-                        const shelfId = await getAxiosInstance({
-                          auth: true,
-                        }).post(`user/shelves/${shelf.id}/books`, {
-                          user_book_id: bookDeatails.id,
-                        });
-                        setSelectedShelf(shelfId);
+                      
+                        setSelectedShelves([...selectedShelves ,shelf.id]);
                       }}
                       type="button"
                       className={`m-2 border border-success btn btn-outline-success${
-                        selectedShelf == shelf.id ? " bg-info" : ""
+                        selectedShelves.includes(shelf.id) ? " bg-info" : ""
                       }`}
                     >
                       {shelf.name}
@@ -126,7 +124,7 @@ const AddNewBook = ({ handleClose, show }) => {
           <>
             <div className="row m-2 p-2">
               {!searchItems.length ? (
-                <span>Search for books to add</span>
+                <span>{t('searchForBooksToAdd')}</span>
               ) : (
                 searchItems.map((item) => {
                   return (
@@ -144,6 +142,7 @@ const AddNewBook = ({ handleClose, show }) => {
                         ).data;
                         setShelves(data.slice(0, 4));
                         handleAddBookToShelf(book);
+                        
                       }}
                     />
                   );
@@ -173,12 +172,26 @@ const AddNewBook = ({ handleClose, show }) => {
                   type="button"
                   onClick={() => {
                     handleClose();
-                    handleDialogClose();
                   }}
                 >
                   {t("cancel")}
+
                 </button>
                 <button
+                  onClick={(async () => {
+                    setAddBookLoading(true)
+                      const shelfId = await getAxiosInstance({
+                          auth: true,
+                        }).post(`user/books`, {
+                          book_id: bookDeatails.id,
+                          shelves: selectedShelves,
+
+                        });
+                      setAddBookLoading(false)
+                      handleClose();
+                      
+                  })}
+                  disabled={addBookLoading}
                   className="btn btn-primary me-md-3 float-end"
                   type="button"
                 >

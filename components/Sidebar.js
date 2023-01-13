@@ -78,7 +78,7 @@ const Sidebar = (props) => {
         </div>
         <div className="row w-125px h-50px m-auto">
           <button
-            className="btn text-primary btn-info m-2"
+            className="btn btn-primary m-2"
             type="button"
             onClick={() => {
               setShowAddShelfDialog(true);

@@ -16,7 +16,7 @@ const AddBookCard = ({ title, url, author, handleAddBookToShelf, id }) => {
             {title}
           </span>
           <span className="fs-6 text-truncate" title={author}>By {author}</span>
-          <button onClick={() => handleAddBookToShelf({ title, author, id })}>
+          <button className="btn btn-primary me-md-2 float-end" onClick={() => handleAddBookToShelf({ title, author, id })}>
             Add
           </button>
         </div>
