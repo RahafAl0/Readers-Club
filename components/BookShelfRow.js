@@ -26,9 +26,9 @@ const BookShelfRow = (props) => {
                     {props.items.slice(0,4).map((item , index) => (
                       <BookCard
                         key={index}
-                        title={item.title}
-                        url={`/books/${item.book_id}`}
-                        author={item.authors}
+                        title={item.book.title}
+                        url={`/books/${item.book.id}`}
+                        author={item.book.authors}
                       />
                     ))}
                   </div>

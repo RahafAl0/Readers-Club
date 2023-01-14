@@ -25,54 +25,46 @@ export default function Home() {
       return data.slice(0, SHELVES_LIMIT)
     })
 
-    const shelvesData = (await Promise.all(shelvesInfo.map((shelf) => {
-      apiFetch.get(`/user/shelves/${shelf.id}/books?limit=${SHELVES_LIMIT}`)
+    const shelvesData = (await Promise.all(shelvesInfo.map((shelf) => apiFetch.get(`/user/shelves/${shelf.id}/books?limit=${SHELVES_LIMIT}`)
     
-    }))).map((res) => res.data)
+    ))).map((res, index) => ({items: res.data.items, title: shelvesInfo[index].name, shelfUrl: shelvesInfo[index].id}))
+    
 
     const [currentlyReadShelf, readShelf] = await Promise.all([
       fetchShelfData("currently-reading"),
       fetchShelfData("read"),
     ]);
     return [
-      ...(currentlyReadShelf.items.length
+      (currentlyReadShelf.items.length
         ? {
             title: t("currentlyReading"),
             shelfUrl: "currently-reading",
             items: currentlyReadShelf.items,
           }
         : {}),
-      ...(readShelf.items.length
+      (readShelf.items.length
         ? { title: t("read"), shelfUrl: "read", items: readShelf.items }
         : {}),
       ...shelvesData,
     ];
   });
   if(isLoading) return <h1>Loading...</h1>
-  console.log('data', data)
+  
+  const viewableShelves = data.filter((item) => item.items && item.items.length);
+
   return (
     <Layout>
       <div>
-        {[
-          { title: t("currentlyReading"), shelfUrl: "currently-reading" },
-          { title: t("read"), shelfUrl: "read" },
-          ...data.map((shelf) => {
-            return {
-              title: shelf.name,
-              shelfUrl: shelf.id,
-              items: shelf.items,
-            };
-          }),
-        ].map((val, index) => {
+        {viewableShelves.length ? viewableShelves.map((val, index) => {
           return (
             <BookShelfRow
-              key={val.title}
+              key={index}
               title={val.title}
               items={val.items}
               shelfUrl={val.shelfUrl}
             />
           );
-        })}
+        }) : <h1>No Shelves To view, please add your shelves to see them here!</h1>}
       </div>
     </Layout>
   );

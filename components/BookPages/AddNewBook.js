@@ -57,6 +57,8 @@ const AddNewBook = ({ handleClose, show }) => {
 
   return (
     <Dialog
+      contentClassName={!searchItems.length ? '' : "w-1000px"}
+      styling={!searchItems.length ? {} : {marginRight: '200px'}}
       show={show}
       handleClose={() => {
         handleClose();

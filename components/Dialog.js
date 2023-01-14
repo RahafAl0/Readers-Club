@@ -1,8 +1,8 @@
 import Modal from 'react-bootstrap/Modal';
 
-function Dialog({handleClose, show, body, header, footer}) {
+function Dialog({handleClose, show, body, header, footer, styling={}, contentClassName=''}) {
   return (
-    <Modal style={{marginLeft: '350px'}} contentClassName="w-1000px " show={show} onHide={handleClose}>
+    <Modal style={styling} contentClassName={contentClassName} show={show} onHide={handleClose}>
       <Modal.Header>
         {header}
       </Modal.Header>
