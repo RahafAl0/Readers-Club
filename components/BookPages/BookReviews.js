@@ -41,12 +41,7 @@ const Review = () => {
         </div>
       </div>
       <div className="row h-50px w-150px">
-        <button type="button" className="btn btn-primary">
-          {t("addTo")}
-        </button>
-        <button type="button" className="btn btn-primary">
-          {t("addReview")}
-        </button>
+        
       </div>
     </div>
   );

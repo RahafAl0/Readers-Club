@@ -28,7 +28,7 @@ const ShelfScreen = () => {
      return {...(await fetchShelfData(verticalShelf.slug)), ...verticalShelf}
     }
     const shelfData = await fetchShelfData(router.query.shelfName)
-    if( !shelfData.count && !verticalShelf) throw new Error('Page Not Found');
+    if(!shelfData.count) throw new Error('Page Not Found');
     return { ...shelfData, slug: router.query.shelfName, label: shelfData.items[0].shelf_name }
   });
 
@@ -36,7 +36,9 @@ const ShelfScreen = () => {
     if (isLoading) {
       return <div className="row g-5 g-xxl-8 m-4">{t("loading")}</div>;
     }
-    return data.items.map(({ book }) => {
+    // <div className="row g-5 g-xxl-8 m-4">{renderBooks()}</div>
+    const books = data.items.map(({ book }) => {
+      // return {id: book.id, title: book.title, author: book.authors}
       return  <BookCard
       key={book.id}
       title={book.title}
@@ -45,6 +47,12 @@ const ShelfScreen = () => {
     
     />;
     });
+    // const booksElements = []
+    // let counter = 0
+    // books.forEach(item => {
+    //   booksElements.push
+    // });
+    
   };
 
   return (
@@ -58,7 +66,7 @@ const ShelfScreen = () => {
                   <h2 className="fw-bolder text-dark fs-2 mb-0">{isLoading ? 'Loading' : data.label}</h2>
                 </div>
                 
-                {!['read', 'currently-read'].includes(isLoading ? '' : data.slug)?<div className="row g-5 g-xxl-8 m-4">{renderBooks()}</div>
+                {!['read', 'currently-read'].includes(isLoading ? '' : data.slug)? renderBooks() 
                 : <>
                 <div className="row g-5 g-xxl-8 m-4">
                  
