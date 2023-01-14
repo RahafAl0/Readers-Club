@@ -70,7 +70,7 @@ const AddNewBook = ({ handleClose, show }) => {
             onSubmit={async (event) => {
               event.preventDefault();
               const data = (
-                await getAxiosInstance({ auth: false }).get(
+                await getAxiosInstance({ auth: true }).get(
                   `/books/search?title=${searchTerm}&exclude_library=true&limit=4` 
                 )
               ).data;
