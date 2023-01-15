@@ -127,9 +127,9 @@ const BookDetail = () => {
           <div className="row g-0">
             <div className="col-md-4">
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/P_literature.svg/800px-P_literature.svg.png"
+                src={book.image ?  'http://localhost:8000' + book.image : "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/P_literature.svg/800px-P_literature.svg.png"}
                 className="img-fluid rounded-start"
-                alt="..."
+                alt={book.title}
                 style={{ height: "450px" }}
               />
             </div>
@@ -152,7 +152,7 @@ const BookDetail = () => {
           </div>
         </div>
       )}
-      {isLoading ? null :renderBookButtons()}
+      {isLoading ?  null : renderBookButtons()}
     </Layout>
   );
 };

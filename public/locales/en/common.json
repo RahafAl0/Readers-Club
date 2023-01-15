@@ -35,5 +35,7 @@
     "donAddBookToFinishedBooks": "Done Add Book To Finished Book",
     "markAsCurrentlyReading": "Mark As Currently Reading",
     "by": "By",
-    "loadingBookDetails": "Loading Book Details"
+    "loadingBookDetails": "Loading Book Details",
+    "noResults":"No Search Results Found!",
+    "searchTerm":"Search Term"
   }

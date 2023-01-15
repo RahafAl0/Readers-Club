@@ -35,5 +35,7 @@
   "donAddBookToFinishedBooks": "تم إضافة الكتاب الى الكتب المقروؤة",
   "markAsCurrentlyReading": "أضف إلى يُقرأ حاليًا",
   "by" : "بواسطة",
-  "loadingBookDetails": "تحميل تفاصيل الكتاب"
+  "loadingBookDetails": "تحميل تفاصيل الكتاب",
+  "noResults":"لم يتم العثور على نتائج للبحث!" ,
+  "searchTerm": "كلمة البحث"
 }

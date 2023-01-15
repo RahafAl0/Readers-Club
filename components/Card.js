@@ -1,6 +1,6 @@
 import { useTranslation } from "next-i18next";
 
-const BookCard = ({ title, url, author }) => {
+const BookCard = ({ title, url, author, image = null }) => {
   const { t } = useTranslation("common");
 
   return (
@@ -9,7 +9,7 @@ const BookCard = ({ title, url, author }) => {
         <div className="card-body p-0 m-3">
           <div className="overlay text-center overflow-hidden ">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/P_literature.svg/800px-P_literature.svg.png"
+              src={image ? image : `https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/P_literature.svg/800px-P_literature.svg.png/`}
               alt={title}
               className=" w-75px"
 

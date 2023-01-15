@@ -36,23 +36,27 @@ const ShelfScreen = () => {
     if (isLoading) {
       return <div className="row g-5 g-xxl-8 m-4">{t("loading")}</div>;
     }
-    // <div className="row g-5 g-xxl-8 m-4">{renderBooks()}</div>
-    const books = data.items.map(({ book }) => {
-      // return {id: book.id, title: book.title, author: book.authors}
-      return  <BookCard
-      key={book.id}
-      title={book.title}
-      url="#"
-      author={book.authors}
-    
-    />;
+    const books = data.items.map(( {book} ) => {
+      return <BookCard
+        key={book.id}
+        title={book.title}
+        image={book.image && 'http://localhost:8000' + book.image}
+        url={`/book/${book.id}`}
+        author={book.authors}
+      />;
     });
-    // const booksElements = []
-    // let counter = 0
-    // books.forEach(item => {
-    //   booksElements.push
-    // });
-    
+
+    const elementsPerBlock = 4
+
+    const bookBlocksCount = Math.ceil(books.length / elementsPerBlock);
+    const bookBlocks = [];
+    let counter = 0;
+
+    for (let i = 0; i < bookBlocksCount; i++) {
+      bookBlocks.push(<div className="row g-5 g-xxl-8 m-4">{books.slice(counter,((i + 1) * 4))}</div>) 
+      counter = (i + 1) * 4;
+    }
+      return bookBlocks;
   };
 
   return (
@@ -66,70 +70,8 @@ const ShelfScreen = () => {
                   <h2 className="fw-bolder text-dark fs-2 mb-0">{isLoading ? 'Loading' : data.label}</h2>
                 </div>
                 
-                {!['read', 'currently-read'].includes(isLoading ? '' : data.slug)? renderBooks() 
-                : <>
-                <div className="row g-5 g-xxl-8 m-4">
-                 
-                  <BookCard
-                    title="1984"
-                    url="/book/1984"
-                    author="Goerge Orewell"
-                  />
-                  <BookCard
-                    title="1984"
-                    url="/book/1984"
-                    author="Goerge Orewell"
-                  />
-                  <BookCard
-                    title="1984"
-                    url="/book/1984"
-                    author="Goerge Orewell"
-                  />
-                </div>
-                <div className="row g-5 g-xxl-8 m-4">
-                  <BookCard
-                    title="1984"
-                    url="/book/1984"
-                    author="Goerge Orewell"
-                  />
-                  <BookCard
-                    title="1984"
-                    url="/book/1984"
-                    author="Goerge Orewell"
-                  />
-                  <BookCard
-                    title="1984"
-                    url="/book/1984"
-                    author="Goerge Orewell"
-                  />
-                  <BookCard
-                    title="1984"
-                    url="/book/1984"
-                    author="Goerge Orewell"
-                  />
-                </div>
-                <div className="row g-5 g-xxl-8 m-4">
-                  <BookCard
-                    title="1984"
-                    url="/book/1984"
-                    author="Goerge Orewell"
-                  />
-                  <BookCard
-                    title="1984"
-                    url="/book/1984"
-                    author="Goerge Orewell"
-                  />
-                  <BookCard
-                    title="1984"
-                    url="/book/1984"
-                    author="Goerge Orewell"
-                  />
-                  <BookCard
-                    title="1984"
-                    url="/book/1984"
-                    author="Goerge Orewell"
-                  />
-                </div>  </>}
+                { renderBooks() }
+                
               </div>
             </div>
           </div>

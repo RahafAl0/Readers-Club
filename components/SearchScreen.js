@@ -12,7 +12,7 @@ const SearchScreen = () => {
   const { t } = useTranslation("common");
 
   const { isLoading, error, data } = useQuery("searchItems", async () => {
-    const searchTerm = router.query.term.replaceAll('-', ' ')
+    const searchTerm = decodeURIComponent(router.query.term).replaceAll('-', ' ')
     return {...((await getAxiosInstance({ auth: true }).get(
       `/books/search?title=${searchTerm}&limit=12`
     )).data), label: searchTerm }
@@ -24,24 +24,30 @@ const SearchScreen = () => {
     if (isLoading) {
       return <div className="row g-5 g-xxl-8 m-4">{t("loading")}</div>;
     }
-    // <div className="row g-5 g-xxl-8 m-4">{renderBooks()}</div>
-    const books = data.items.map((book) => {
-      // return {id: book.id, title: book.title, author: book.authors}
-      return (
-        <BookCard
-          key={book.id}
-          title={book.title}
-          url="#"
-          author={book.authors}
-        />
-        
-      );
+  
+    if(data.count == 0) return <h1>{t('noResults')}</h1>
+    
+    const books = data.items.map(( book ) => {
+      return <BookCard
+        key={book.id}
+        title={book.title}
+        url={`/book/${book.id}`}
+        author={book.authors}
+        image={book.image && 'http://localhost:8000' + book.image}
+      />;
     });
-    // const booksElements = []
-    // let counter = 0
-    // books.forEach(item => {
-    //   booksElements.push
-    // });
+
+    const elementsPerBlock = 4
+
+    const bookBlocksCount = Math.ceil(books.length / elementsPerBlock);
+    const bookBlocks = [];
+    let counter = 0;
+
+    for (let i = 0; i < bookBlocksCount; i++) {
+      bookBlocks.push(<div key={i} className="row g-5 g-xxl-8 m-4">{books.slice(counter,((i + 1) * 4))}</div>) 
+      counter = (i + 1) * 4;
+    }
+      return bookBlocks;
   };
 
   return (
@@ -53,10 +59,10 @@ const SearchScreen = () => {
               <div className="mb-10">
                 <div className="d-flex justify-content-between align-items-center mb-7">
                   <h2 className="fw-bolder text-dark fs-2 mb-0">
-                    {isLoading ? "Loading" : 'Search Term: '+data.label}
+                    {isLoading ? "Loading" : t('searchTerm')+ ": " +data.label}
                   </h2>
                 </div>
-                {renderBooks()}
+                {isLoading ? <h1>Loading ...</h1> : renderBooks()}
               </div>
             </div>
           </div>

@@ -131,9 +131,9 @@ const AddNewBook = ({ handleClose, show }) => {
                 searchItems.map((item) => {
                   return (
                     <AddBookCard
+                      image={item.image}
                       key={item.id}
                       title={item.title}
-                      url="/book/1984"
                       author={item.authors}
                       id={item.id}
                       handleAddBookToShelf={async (book) => {

@@ -10,7 +10,7 @@ const AddToUserBooksDialog = ({ book, show, handleClose, initialShelves=[] }) =>
   const [selectedShelves, setSelectedShelves] = useState(initialShelves);
   const [addBookLoading, setAddBookLoading] = useState(false);
 
-  const { isLoading, error, data: shelves=[] } = useQuery("mostRecentBooks", () => {
+  const { isLoading, error, data: shelves=[] } = useQuery("userShelves", () => {
     return getAxiosInstance({ auth: true })
       .get("/user/shelves")
       .then((res) => res.data);
