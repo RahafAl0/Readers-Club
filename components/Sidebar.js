@@ -36,6 +36,10 @@ const Sidebar = (props) => {
     ];
 
     return { userProfile, statusBoxItems };
+  },{
+    onError:(err)=>{
+      console.log('error in sidebar fetching => ',err);
+    }
   });
 
   const router = useRouter();

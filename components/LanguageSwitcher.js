@@ -16,7 +16,10 @@ export default function LocaleSwitcher() {
         const { pathname, query, asPath } = router;
         return (
           <span key={"locale-" + locale}>
-            <Link href={{ pathname, query }} as={asPath} locale={locale}>
+            <Link onClick={(event)=>{
+              document.cookie = `NEXT_LOCALE=${locale}`;
+              window.reload()
+            }} href={{ pathname, query }} as={asPath} locale={locale}>
                 {locale === "en" ? "English" : locale === "ar" ? "عربى" : null}
             </Link>
           </span>

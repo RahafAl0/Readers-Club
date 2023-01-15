@@ -9,16 +9,16 @@ export default function Layout({ children }) {
   return(
   <div className="d-flex flex-column flex-root">
     <div className="page d-flex flex-row flex-column-fluid">
-      {router.locale == 'ar'?  <div className='sidebar bg-info w-325px'>   <Sidebar/>          </div> : null}
+      {router.locale == 'ar'?  <div className='sidebar bg-info w-325px'><Sidebar/></div> : null}
       <div className="wrapper d-flex flex-column flex-row-fluid">
-        <div className='header'>
+        <div className='header' style={{marginRight:"50px", marginLeft:'50px'}}>
           <LocaleSwitcher />
            <Searchbar/>          </div>
         <div className="d-flex flex-column flex-column-fluid">
           <main>{children}</main>
         </div>
       </div>
-      {router.locale == 'en'?  <div className='sidebar bg-info w-325px'>   <Sidebar/>          </div> : null}
+      {router.locale == 'en'?  <div className='sidebar  bg-info w-325px'><Sidebar/></div> : null}
     </div>
   </div>
   )
