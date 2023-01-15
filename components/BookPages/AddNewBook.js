@@ -97,7 +97,7 @@ const AddNewBook = ({ handleClose, show }) => {
           <>
             <div className="m-10">
               <h5>{bookDeatails.title}</h5>
-              <p>{t(By)} {bookDeatails.author}</p>
+              <p>{t('by')} {bookDeatails.author}</p>
             </div>
             <div className=" h-50px">
               {!shelves.length ? (

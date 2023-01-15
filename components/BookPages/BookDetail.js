@@ -127,7 +127,7 @@ const BookDetail = () => {
           <div className="row g-0">
             <div className="col-md-4">
               <img
-                src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1327144697l/3744438.jpg"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/P_literature.svg/800px-P_literature.svg.png"
                 className="img-fluid rounded-start"
                 alt="..."
                 style={{ height: "450px" }}

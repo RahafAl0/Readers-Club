@@ -1,11 +1,15 @@
+import { useTranslation } from "next-i18next";
+
 const BookCard = ({ title, url, author }) => {
+  const { t } = useTranslation("common");
+
   return (
     <div className="col-md-2 col-xxl-4 col-lg-12  w-175px h-245px  shadow-lg p-6 mb-5 bg-white rounded ">
       <div className="card card-custom shadow-none">
         <div className="card-body p-0 m-3">
           <div className="overlay text-center overflow-hidden ">
             <img
-              src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1327144697l/3744438.jpg"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/P_literature.svg/800px-P_literature.svg.png"
               alt={title}
               className=" w-75px"
 
@@ -21,7 +25,7 @@ const BookCard = ({ title, url, author }) => {
           >
             {title}
           </a>
-          <span className="fs-6 text-truncate" title={author}>{t(By)} {author}</span>
+          <span className="fs-6 text-truncate" title={author}>{t('by')} {author}</span>
        
         </div>
       </div>

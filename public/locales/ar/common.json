@@ -34,6 +34,6 @@
   "removeBook": "احذف الكتاب",
   "donAddBookToFinishedBooks": "تم إضافة الكتاب الى الكتب المقروؤة",
   "markAsCurrentlyReading": "أضف إلى يُقرأ حاليًا",
-  "By" : "بواسطة",
+  "by" : "بواسطة",
   "loadingBookDetails": "تحميل تفاصيل الكتاب"
 }
