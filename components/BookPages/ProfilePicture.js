@@ -1,10 +1,18 @@
 import { useRef } from "react";
 import { useTranslation } from "next-i18next";
+import { useQuery } from "react-query";
+import { API_URL } from "../../utils/api/getAxiosInstance";
+import { getUser } from "../../utils/api/auth";
 import getAxiosInstance from "../../utils/api/getAxiosInstance";
 import Dialog from "../Dialog";
 
 const ProfilePictureEdit = ({ handleClose, show }) => {
   const { t } = useTranslation("common");
+
+  const { isLoading, error, data } = useQuery(
+    "userImage",
+    async () => await getUser()
+  );
 
   const inputImageRef = useRef();
 
@@ -18,6 +26,7 @@ const ProfilePictureEdit = ({ handleClose, show }) => {
         </>
       }
       body={
+        isLoading ? <h1>Loading</h1> : 
         <>
           <p className="text-center">
             {t("addAnicephotoOfYourselfForYourProfile")}
@@ -25,7 +34,9 @@ const ProfilePictureEdit = ({ handleClose, show }) => {
           <div className="p-5">
             <img
               className="rounded-circle mx-auto d-block "
-              src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(21).webp"
+              src={
+                !data.image ? "/avatar.jpg" : "http://localhost:8000" + data.image
+              }
               alt="avatar"
               width="100"
               height="100"

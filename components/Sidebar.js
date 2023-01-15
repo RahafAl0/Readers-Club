@@ -8,6 +8,7 @@ import AddShelf from "./BookPages/AddShelf";
 import AddNewBook from "./BookPages/AddNewBook";
 import { fetchShelfData } from "../utils/api/shelf";
 import { getBooks } from "../utils/api/books";
+import { API_URL } from "../utils/api/getAxiosInstance";
 
 const Sidebar = (props) => {
   const { t } = useTranslation("common");
@@ -40,20 +41,19 @@ const Sidebar = (props) => {
   const router = useRouter();
 
   const { userProfile, statusBoxItems = [] } = data || {};
-
+  console.log('prof', userProfile)
   return (
     <>
       <div className="d-flex flex-column sidebar-body bg-info">
         <div className="position-relative">
-          <span className="position-absolute">X</span>
           <img
             className="h-150px w-150px rounded-circle mx-auto d-block m-10"
-            // src={isLoading ? '/avatar.jpg' : userProfile.image}
-            src="/avatar.jpg"
+            src={isLoading || !userProfile.image ? "/avatar.jpg" : "http://localhost:8000" + userProfile.image}
             role="button"
             onClick={() => {
               setShowImageDialog(true);
             }}
+
           />
         </div>
         <div className="text-center m-1">
