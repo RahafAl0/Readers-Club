@@ -48,7 +48,7 @@ const AddNewBook = ({ handleClose, show }) => {
           handleClose();
           handleDialogClose();
         }}
-        header={<h5>Add book</h5>}
+        header={<h5>{t('addBook')}</h5>}
         body={<h1>Loading...</h1>}
         footer={<></>}
       />
@@ -97,7 +97,7 @@ const AddNewBook = ({ handleClose, show }) => {
           <>
             <div className="m-10">
               <h5>{bookDeatails.title}</h5>
-              <p>By {bookDeatails.author}</p>
+              <p>{t(By)} {bookDeatails.author}</p>
             </div>
             <div className=" h-50px">
               {!shelves.length ? (

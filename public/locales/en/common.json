@@ -31,5 +31,9 @@
     "addReview": "Add review",
     "searchForBooksToAdd": "Search for books to add",
     "addToShelf": "Add To Shelf",
-    
+    "removeBook": "Remove Book",
+    "donAddBookToFinishedBooks": "Done Add Book To Finished Book",
+    "markAsCurrentlyReading": "Mark As Currently Reading",
+    "By": "By",
+    "loadingBookDetails": "Loading Book Details"
   }

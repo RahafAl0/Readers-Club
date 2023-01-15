@@ -94,7 +94,7 @@ const BookDetail = () => {
                 await getAxiosInstance({ auth: true }).delete(
                   `/user/books/${book.user_book_id}`
                 );
-                alert("done add book to finished books");
+                alert(t("done add book to finished books"));
               }}
             >
               {t("removeBook")}
@@ -121,7 +121,7 @@ const BookDetail = () => {
   return (
     <Layout>
       {isLoading ? (
-        <h1>Loading your book detail</h1>
+        <h1>Loading book details</h1>
       ) : (
         <div className="card border mb-3 w-700px h-120px m-auto">
           <div className="row g-0">
@@ -152,7 +152,7 @@ const BookDetail = () => {
           </div>
         </div>
       )}
-      {renderBookButtons()}
+      {isLoading ? null :renderBookButtons()}
     </Layout>
   );
 };

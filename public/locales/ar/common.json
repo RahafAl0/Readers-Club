@@ -30,5 +30,10 @@
   "addTo": "أضف إلى",
   "addReview": "أضف تقييم",
   "searchForBooksToAdd": "ابحث عن كتاب لإضافته",
-  "addToShelf": "أضف إلى رف"
+  "addToShelf": "أضف إلى رف",
+  "removeBook": "احذف الكتاب",
+  "donAddBookToFinishedBooks": "تم إضافة الكتاب الى الكتب المقروؤة",
+  "markAsCurrentlyReading": "أضف إلى يُقرأ حاليًا",
+  "By" : "بواسطة",
+  "loadingBookDetails": "تحميل تفاصيل الكتاب"
 }

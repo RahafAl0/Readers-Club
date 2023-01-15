@@ -21,7 +21,7 @@ const BookCard = ({ title, url, author }) => {
           >
             {title}
           </a>
-          <span className="fs-6 text-truncate" title={author}>By {author}</span>
+          <span className="fs-6 text-truncate" title={author}>{t(By)} {author}</span>
        
         </div>
       </div>

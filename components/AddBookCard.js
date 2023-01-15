@@ -15,7 +15,7 @@ const AddBookCard = ({ title, url, author, handleAddBookToShelf, id }) => {
           <span className="fs-4 fw-bolder text-gray-800 text-hover-primary mb-1 text-truncate cursor-pointer" title={title}>
             {title}
           </span>
-          <span className="fs-6 text-truncate" title={author}>By {author}</span>
+          <span className="fs-6 text-truncate" title={author}>{t(By)} {author}</span>
           <button className="btn btn-primary me-md-2 float-end" onClick={() => handleAddBookToShelf({ title, author, id })}>
             Add
           </button>
