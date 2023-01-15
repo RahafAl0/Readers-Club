@@ -3,9 +3,14 @@ import { useQuery } from "react-query";
 import { useTranslation } from "next-i18next";
 import getAxiosInstance from "../../utils/api/getAxiosInstance";
 import Layout from "../Layout";
+import { useState } from "react";
+import AddToUserBooksDialog from "./AddToUserBooksDialog";
 
 const BookDetail = () => {
   const { t } = useTranslation("common");
+
+  const [showAddBookDialog, setShowAddBookDialog] = useState(false);
+  const [showAddToShelfDialog, setShowAddToShelfDialog] = useState(false)
 
   const {
     query: { bookId },
@@ -28,40 +33,88 @@ const BookDetail = () => {
 
   const { book, userBook } = data || {};
 
-  const renderUserBooksButtons = () => {
-    const {is_currently_reading} = userBook || {}
-    return !userBook ? null : (
-      <>
-        {!is_currently_reading ?   <button
-            type="button"
-            className="btn btn-primary"
-            onClick={async (event) => {
-              await getAxiosInstance({ auth: true }).put(
-                `/user/currently-reading`,{user_book_id: userBook.id, status: true}
-              );
-              alert("done add book to currently reading books");
-            }}
-          >
-            {t("markAsCurrentlyReading")}
-          </button> : (
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={async (event) => {
-              await getAxiosInstance({ auth: true }).put(
-                `/user/books/${book.user_book_id}/done`
-              );
-              alert("done add book to finished books");
-            }}
-          >
-            {t("markAsRead")}
-          </button>
+  const renderBookButtons = () => {
+    const { is_currently_reading } = userBook || {};
+    return (
+      <div className="d-flex justify-content-center mt-20 gap-5">
+        {!userBook ? (
+          <>
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={() => {
+                setShowAddBookDialog(true);
+              }}
+            >
+              {t("addBook")}
+            </button>
+            <AddToUserBooksDialog
+              show={showAddBookDialog}
+              book={book}
+              handleClose={() => {
+                setShowAddBookDialog(false);
+              }}
+            />
+          </>
+        ) : (
+          <>
+            {!is_currently_reading ? (
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={async (event) => {
+                  await getAxiosInstance({ auth: true }).put(
+                    `/user/currently-reading`,
+                    { user_book_id: userBook.id, status: true }
+                  );
+                  alert("done add book to currently reading books");
+                }}
+              >
+                {t("markAsCurrentlyReading")}
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={async (event) => {
+                  await getAxiosInstance({ auth: true }).put(
+                    `/user/books/${book.user_book_id}/done`
+                  );
+                  alert("done add book to finished books");
+                }}
+              >
+                {t("markAsRead")}
+              </button>
+            )}
+
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={async (event) => {
+                await getAxiosInstance({ auth: true }).delete(
+                  `/user/books/${book.user_book_id}`
+                );
+                alert("done add book to finished books");
+              }}
+            >
+              {t("removeBook")}
+            </button>
+          </>
         )}
-        
-        <button type="button" className="btn btn-primary">
-          {t("removeBook")}
+        <button type="button" className="btn btn-primary" onClick={() => {
+          setShowAddToShelfDialog(true)
+        }}>
+          {t("addToShelf")}
         </button>
-      </>
+        <AddToUserBooksDialog
+              initialShelves={ userBook ? userBook.shelves : []}
+              show={showAddToShelfDialog}
+              book={book || {}}
+              handleClose={() => {
+                setShowAddToShelfDialog(false);
+              }}
+            />
+      </div>
     );
   };
 
@@ -95,18 +148,11 @@ const BookDetail = () => {
                 </div>
               </div>
             </div>
-            <div className="col-md-2">
-              {renderUserBooksButtons()}
-              {/* <button type="button" className="btn btn-primary">
-                {t("addToShelf")}
-              </button> */}
-              <button type="button" className="btn btn-primary">
-                {t("addBook")}
-              </button>
-            </div>
+            <div className="col-md-2"></div>
           </div>
         </div>
       )}
+      {renderBookButtons()}
     </Layout>
   );
 };

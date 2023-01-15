@@ -29,5 +29,7 @@
     "review": "Review",
     "addTo": "Add to",
     "addReview": "Add review",
-    "searchForBooksToAdd": "Search for books to add"
+    "searchForBooksToAdd": "Search for books to add",
+    "addToShelf": "Add To Shelf",
+    
   }
