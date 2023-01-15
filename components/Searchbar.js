@@ -1,13 +1,17 @@
 import { useTranslation } from 'next-i18next'
 import { useState } from "react";
 import QueryString from "qs";
+import  { useRouter } from 'next/router';
 import getAxiosInstance from "../utils/api/getAxiosInstance";
+import slugify from 'slugify';
 
 const Searchbar = () => {
   const { t } = useTranslation('common');
 
   const [searchTerm, setSearchTerm] = useState('');
   const [seachResults, setSearchResults] = useState(null)
+
+  const router = useRouter();
 
   const searchQueryStrings = QueryString.stringify(
     { author: searchTerm, title: searchTerm, limit: 6 },
@@ -18,8 +22,7 @@ const Searchbar = () => {
         <div className="container-fluid">
           <form onSubmit={async (event) => {
             event.preventDefault()
-            const response = await getAxiosInstance({ auth: false }).get('/books/search'+searchQueryStrings)
-            setSearchResults(response.data)
+              router.push(`/search?term=${slugify(searchTerm)}`);
           }} className="d-flex" role="search">
             <input onChange={(event) => {
               setSearchTerm(event.target.value)

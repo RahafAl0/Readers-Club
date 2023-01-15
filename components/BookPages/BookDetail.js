@@ -31,7 +31,7 @@ const BookDetail = () => {
               style={{ height: "450px" }}
             />
           </div>
-          <div className="col-md-8 ">
+          <div className="col-md-6 ">
             <div className="card-header">
               <p className="fw-bold fs-1">{data.title}</p>
               <p className="fs-1 fw-bold">{data.authors}</p>
@@ -46,15 +46,21 @@ const BookDetail = () => {
               </div>
             </div>
           </div>
+          <div className="col-md-2" >
+          <button type="button" className="btn btn-primary">
+          {t("markAsRead")}
+        </button>
+        <button type="button" className="btn btn-primary">
+          {t("marsAsDone")}
+        </button>
+        <button type="button" className="btn btn-primary">
+          {t("addToShelf")}
+        </button>
+          </div>
+
         </div>
       </div>
       }
-      <button type="button" className="btn btn-primary">
-          {t("addTo")}
-        </button>
-        <button type="button" className="btn btn-primary">
-          {t("addReview")}
-        </button>
     </Layout>
   );
 };
