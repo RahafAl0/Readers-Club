@@ -38,24 +38,7 @@ const BookDetail = () => {
     return (
       <div className="d-flex justify-content-center mt-20 gap-5">
         {!userBook ? (
-          <>
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={() => {
-                setShowAddBookDialog(true);
-              }}
-            >
-              {t("addBook")}
-            </button>
-            <AddToUserBooksDialog
-              show={showAddBookDialog}
-              book={book}
-              handleClose={() => {
-                setShowAddBookDialog(false);
-              }}
-            />
-          </>
+          null
         ) : (
           <>
             {!is_currently_reading ? (
@@ -104,7 +87,7 @@ const BookDetail = () => {
         <button type="button" className="btn btn-primary" onClick={() => {
           setShowAddToShelfDialog(true)
         }}>
-          {t("addToShelf")}
+          {userBook ?  t("addToShelf") :t('addBook')}
         </button>
         <AddToUserBooksDialog
               initialShelves={ userBook ? userBook.shelves : []}

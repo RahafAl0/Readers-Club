@@ -106,8 +106,7 @@ const AddNewBook = ({ handleClose, show }) => {
                 shelves.map((shelf) => {
                   return (
                     <button
-                      onClick={async (event) => {
-                      
+                      onClick={async (event) => { 
                         setSelectedShelves([...selectedShelves ,shelf.id]);
                       }}
                       type="button"
@@ -195,7 +194,7 @@ const AddNewBook = ({ handleClose, show }) => {
                       handleClose();
                       
                   })}
-                  disabled={addBookLoading}
+                  disabled={addBookLoading || !selectedShelves.length}
                   className="btn btn-primary me-md-3 float-end"
                   type="button"
                 >

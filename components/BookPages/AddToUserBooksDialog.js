@@ -47,7 +47,7 @@ const AddToUserBooksDialog = ({ book, show, handleClose, initialShelves=[] }) =>
                     }}
                     type="button"
                     className={`m-2 border border-success btn btn-outline-success${
-                      selectedShelves.includes(shelf.id) ? " bg-info" : ""
+                      selectedShelves.includes(shelf.id) ? " bg-success text-dark" : ""
                     }`}
                   >
                     {shelf.name}
@@ -85,7 +85,7 @@ const AddToUserBooksDialog = ({ book, show, handleClose, initialShelves=[] }) =>
                   handleClose();
                   setSelectedShelves([])
                 }}
-                disabled={addBookLoading}
+                disabled={addBookLoading || !selectedShelves.length}
                 className="btn btn-primary me-md-3 float-end"
                 type="button"
               >
