@@ -1,4 +1,5 @@
 import { useTranslation } from "next-i18next";
+import Link from "next/link";
 
 const BookCard = ({ title, url, author, image = null }) => {
   const { t } = useTranslation("common");
@@ -18,13 +19,13 @@ const BookCard = ({ title, url, author, image = null }) => {
           <img src="/plus.svg" />
         </div>
         <div className=" mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column">
-          <a
+          <Link
             className="fs-4 fw-bolder text-gray-800 text-hover-primary mb-1 text-truncate"
             href={url}
             title={title}
           >
             {title}
-          </a>
+          </Link>
           <span className="fs-6 text-truncate" title={author}>{t('by')} {author}</span>
        
         </div>

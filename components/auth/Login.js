@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { login } from "../../utils/api/auth";
-import { t } from "i18next";
 
 const Login = () => {
   const { t } = useTranslation("common");
@@ -15,6 +14,7 @@ const Login = () => {
   const router = useRouter();
 
   return (
+    <div className="vh-100">
     <div className="container h-100">
       <div className="row d-flex justify-content-center align-items-center h-100">
         <div className="col-lg-12 col-xl-11">
@@ -81,10 +81,6 @@ const Login = () => {
                           />
                         </div>
                       </div>
-
-                      <div className="col">
-                        <a href="#!">{t("forgetPassword")}</a>
-                      </div>
                     </div>
 
                     <button
@@ -123,6 +119,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -112,7 +112,7 @@ const AddNewBook = ({ handleClose, show }) => {
                       }}
                       type="button"
                       className={`m-2 border border-success btn btn-outline-success${
-                        selectedShelves.includes(shelf.id) ? " bg-info" : ""
+                        selectedShelves.includes(shelf.id) ? " bg-success text-dark" : ""
                       }`}
                     >
                       {shelf.name}
@@ -157,12 +157,13 @@ const AddNewBook = ({ handleClose, show }) => {
       footer={
         addBookToShelf ? (
           <>
-            <div className="card-footer m-2 d-flex align-items-center justify-content-between">
+            <div className="card-footer m-2 d-flex align-items-center justify-content-between w-100">
               <span
                 className="text-muted padding-left"
                 role="button"
                 onClick={() => {
                   setAddBookToShelf(false);
+                  setSelectedShelves([])
                 }}
               >
                 {" "}
@@ -174,6 +175,7 @@ const AddNewBook = ({ handleClose, show }) => {
                   type="button"
                   onClick={() => {
                     handleClose();
+                    handleDialogClose();
                   }}
                 >
                   {t("cancel")}

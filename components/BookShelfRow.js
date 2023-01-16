@@ -1,4 +1,5 @@
 import { useTranslation } from 'next-i18next'
+import Link from 'next/link';
 import BookCard from "./Card";
 
 const BookShelfRow = (props) => {
@@ -15,12 +16,12 @@ const BookShelfRow = (props) => {
                     <h2 className="fw-bolder text-dark fs-2 mb-0">
                       {props.title}
                     </h2>
-                    <a
+                    <Link
                       href={`/shelf/${props.shelfUrl}`}
                       className="btn btn-light-primary btn-sm fw-bolder"
                     >
                      {t('viewMore')}
-                    </a>
+                    </Link>
                   </div>
                   <div className="row g-5 g-xxl-8">
                     {props.items.slice(0,4).map((item , index) => (

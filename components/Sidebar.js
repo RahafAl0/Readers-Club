@@ -8,7 +8,7 @@ import AddShelf from "./BookPages/AddShelf";
 import AddNewBook from "./BookPages/AddNewBook";
 import { fetchShelfData } from "../utils/api/shelf";
 import { getBooks } from "../utils/api/books";
-import { API_URL } from "../utils/api/getAxiosInstance";
+import Link from "next/link";
 
 const Sidebar = (props) => {
   const { t } = useTranslation("common");
@@ -45,7 +45,6 @@ const Sidebar = (props) => {
   const router = useRouter();
 
   const { userProfile, statusBoxItems = [] } = data || {};
-  console.log('prof', userProfile)
   return (
     <>
       <div className="d-flex flex-column sidebar-body bg-info">
@@ -67,7 +66,7 @@ const Sidebar = (props) => {
           <div className="row row-cols-2 px-xl-12 sidebar-toolbar">
             {[...statusBoxItems].map((item, index) => (
               <div key={index} className="col p-3 ">
-                <a
+                <Link
                   href={item.link}
                   className="btn p-5 w-100 text-start btn-active-primary h-100px"
                 >
@@ -75,7 +74,7 @@ const Sidebar = (props) => {
                     {item.count}
                   </span>
                   <span className="fw-bold fs-8">{item.title}</span>
-                </a>
+                </Link>
               </div>
             ))}
           </div>
