@@ -110,7 +110,7 @@ const BookDetail = () => {
           <div className="row g-0">
             <div className="col-md-4">
               <img
-                src={book.image ?  'http://localhost:8000' + book.image : y}
+                src={book.image ?  'http://localhost:8000' + book.image : "/sample.jpg"}
                 className="img-fluid rounded-start"
                 alt={book.title}
                 style={{ height: "450px" }}

@@ -37,5 +37,9 @@
   "by" : "بواسطة",
   "loadingBookDetails": "تحميل تفاصيل الكتاب",
   "noResults":"لم يتم العثور على نتائج للبحث!" ,
-  "searchTerm": "كلمة البحث"
+  "searchTerm": "كلمة البحث",
+  "doneAddBookToFinishedBooks": "تم إضافة الكتاب إلى الكتب المقروءة",
+  "doneAddBookToCurrentlyReadingBooks": "تم إضافة الكتاب إلى الكتب التي تقرأ حاليًا",
+    "markAsRead" : "مقروء",
+    "AboutUsTheReadersClubIsASiteForReadersToHelpYouFindYourBooksThatYouLikeAndArrangeThemInYourOwnWayWhatDistinguishesThisSiteFromOthersIsItsIntuitiveUserExperienceAndThatItSupportsTheArabicLnguage": "نادي القراء هو موقع للقراء لمساعدتك في العثور على كتبك التي تعجبك وترتيبها على طريقتك الخاصة. ما يميز هذا الموقع عن غيره هو تجربة المستخدم البديهية وأنه يدعم اللغة العربية."
 }

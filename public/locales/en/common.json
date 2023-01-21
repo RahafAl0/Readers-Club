@@ -34,8 +34,12 @@
     "removeBook": "Remove Book",
     "donAddBookToFinishedBooks": "Done Add Book To Finished Book",
     "markAsCurrentlyReading": "Mark As Currently Reading",
+    "markAsRead" :"Mark as Read",
     "by": "By",
     "loadingBookDetails": "Loading Book Details",
     "noResults":"No Search Results Found!",
-    "searchTerm":"Search Term"
+    "searchTerm":"Search Term",
+    "doneAddBookToFinishedBooks": "done add book to finished books",
+    "doneAddBookToCurrentlyReadingBooks": "done add book to finished books",
+    "AboutUsTheReadersClubIsASiteForReadersToHelpYouFindYourBooksThatYouLikeAndArrangeThemInYourOwnWayWhatDistinguishesThisSiteFromOthersIsItsIntuitiveUserExperienceAndThatItSupportsTheArabicLnguage": "The Readers Club is a site for readers to help you find your books that you like and arrange them in your own way. What distinguishes this site from others is its intuitive user experience and that it supports the Arabic language."
   }

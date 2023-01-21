@@ -75,10 +75,12 @@ const AddToUserBooksDialog = ({ book, show, handleClose, initialShelves=[] }) =>
               <button
                 onClick={async () => {
                   setAddBookLoading(true);
+                  console.log("book", book)
+                  console.log("select", selectedShelves)
                  await getAxiosInstance({
                     auth: true,
                   }).post(`user/books`, {
-                    book_id: book.id,
+                    book_id: book.user_book_id,
                     shelves: selectedShelves,
                   });
                   setAddBookLoading(false);
